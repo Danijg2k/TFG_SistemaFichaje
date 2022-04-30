@@ -1,0 +1,11 @@
+USE Fichaje;
+
+CREATE TABLE Empleado(
+Id INTEGER IDENTITY(1,1),
+Nombre VARCHAR(200),
+Edad INTEGER,
+Direccion VARCHAR(150),
+Puesto VARCHAR(50),
+Dni VARCHAR(9) UNIQUE,
+CONSTRAINT Pk_Empleado PRIMARY KEY(Id)
+);

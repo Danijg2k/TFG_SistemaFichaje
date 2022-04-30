@@ -1,0 +1,10 @@
+USE Fichaje;
+
+CREATE TABLE Cuenta(
+Id INTEGER IDENTITY(1,1),
+Correo VARCHAR(100) UNIQUE,
+Contrasena VARCHAR(50),
+FechaCreacion DATE,
+Rol VARCHAR(50),
+CONSTRAINT Pk_Cuenta PRIMARY KEY(Id)
+);

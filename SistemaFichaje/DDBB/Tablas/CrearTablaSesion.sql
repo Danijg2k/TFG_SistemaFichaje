@@ -1,0 +1,10 @@
+USE Fichaje;
+
+CREATE TABLE Sesion(
+Id INTEGER IDENTITY(1,1),
+IdEmpleado INTEGER,
+Fecha DATE,
+Hora TIME,
+CONSTRAINT Pk_Sesion PRIMARY KEY(Id),
+CONSTRAINT Fk_Empleado_Sesion FOREIGN KEY (IdEmpleado) REFERENCES Empleado(Id)
+);
