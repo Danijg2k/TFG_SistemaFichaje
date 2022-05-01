@@ -6,6 +6,7 @@ public class FichajeContext : DbContext
     { }
 
     public DbSet<EmpleadoEntity> Empleados { get; set; }
+    public DbSet<SesionEntity> Sesiones { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
