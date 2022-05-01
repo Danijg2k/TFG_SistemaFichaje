@@ -1,25 +1,37 @@
 {
 	"info": {
-		"_postman_id": "1533e439-7460-42dd-956b-e5bcd25e22b7",
-		"name": "BidApi",
+		"_postman_id": "b4c7f17a-d565-4b93-9863-4d7d04f1326a",
+		"name": "Fichaje_Cuenta",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "GET",
+			"name": "GET ALL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"LONG SLEEVE FITTED HEART STRIPED TOP WITH LONG SLEEVE\",\n        \"description\": \"Top ajustado de manga larga EXTRA LIFE, con tejido a rayas y detalle corazón central.\",\n        \"image\": \"/assets/images/items/product1/blue.jpg\",\n        \"colors\": \"blue/lime/pink\"\n    }"
+				},
 				"url": {
-					"raw": "https://localhost:7199/bids/",
+					"raw": "https://localhost:7199/cuentas",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"bids",
-						""
+						"cuentas"
 					]
 				}
 			},
@@ -31,15 +43,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7199/bids/1",
+					"raw": "https://localhost:7199/cuentas/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"bids",
-						"1"
+						"cuentas",
+						"2"
 					]
 				}
 			},
@@ -58,17 +70,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"price\": 100,\n        \"idProducto\": 1\n    }"
+					"raw": "{\n    \"correo\": \"javiH@gmail.com\",\n    \"contrasena\": \"pass5\",\n    \"fechaCreacion\": \"2022-05-01T00:00:00\",\n    \"rol\": \"User\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:7199/bids",
+					"raw": "https://localhost:7199/cuentas",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"bids"
+						"cuentas"
 					]
 				}
 			},
@@ -80,15 +92,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7199/bids/2",
+					"raw": "https://localhost:7199/cuentas/6",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"bids",
-						"2"
+						"cuentas",
+						"6"
 					]
 				}
 			},
@@ -107,38 +119,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"price\": 100,\n        \"idProducto\": 2\n    }"
+					"raw": "{\n    \"correo\": \"mariaT@gmail.com\",\n    \"contrasena\": \"pass7\",\n    \"fechaCreacion\": \"2022-05-01T00:00:00\",\n    \"rol\": \"User\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:7199/bids/2",
+					"raw": "https://localhost:7199/cuentas/7",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"bids",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET ALL BY PRODUCTID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:7199/bids/product2",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "7199",
-					"path": [
-						"bids",
-						"product2"
+						"cuentas",
+						"7"
 					]
 				}
 			},
