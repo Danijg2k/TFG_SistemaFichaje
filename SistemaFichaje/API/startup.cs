@@ -23,13 +23,13 @@ public class Startup
 
         var mapperConfig = new MapperConfiguration(mc =>
         {
-            //mc.AddProfile(new ProductProfile());
+            mc.AddProfile(new EmpleadoProfile());
         });
 
         IMapper mapper = mapperConfig.CreateMapper();
         services.AddSingleton(mapper);
 
-        //services.AddSingleton<IProductService, ProductService>();
+        services.AddSingleton<IEmpleadoService, EmpleadoService>();
 
     }
 

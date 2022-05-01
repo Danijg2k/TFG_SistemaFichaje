@@ -1557,11 +1557,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/dani/AngularApps/AngularBase/API/Api.csproj",
+      "projectUniqueName": "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj",
       "projectName": "Api",
-      "projectPath": "/home/dani/AngularApps/AngularBase/API/Api.csproj",
+      "projectPath": "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj",
       "packagesPath": "/home/dani/.nuget/packages/",
-      "outputPath": "/home/dani/AngularApps/AngularBase/API/obj/",
+      "outputPath": "/home/dani/AngularApps/SistemaFichaje/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/dani/.nuget/NuGet/NuGet.Config"
@@ -1631,7 +1631,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
       }
     }
   }

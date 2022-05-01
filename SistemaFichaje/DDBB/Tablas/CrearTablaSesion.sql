@@ -6,5 +6,5 @@ IdEmpleado INTEGER,
 Fecha DATE,
 Hora TIME,
 CONSTRAINT Pk_Sesion PRIMARY KEY(Id),
-CONSTRAINT Fk_Empleado_Sesion FOREIGN KEY (IdEmpleado) REFERENCES Empleado(Id)
+CONSTRAINT Fk_Empleado_Sesion FOREIGN KEY (IdEmpleado) REFERENCES Empleado(Id) ON UPDATE CASCADE ON DELETE CASCADE
 );

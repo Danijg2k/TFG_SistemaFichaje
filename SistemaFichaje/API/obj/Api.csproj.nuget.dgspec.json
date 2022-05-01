@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/dani/AngularApps/AngularBase/API/Api.csproj": {}
+    "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj": {}
   },
   "projects": {
-    "/home/dani/AngularApps/AngularBase/API/Api.csproj": {
+    "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dani/AngularApps/AngularBase/API/Api.csproj",
+        "projectUniqueName": "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj",
         "projectName": "Api",
-        "projectPath": "/home/dani/AngularApps/AngularBase/API/Api.csproj",
-        "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/home/dani/AngularApps/AngularBase/API/obj/",
+        "projectPath": "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj",
+        "packagesPath": "/home/dani/.nuget/packages/",
+        "outputPath": "/home/dani/AngularApps/SistemaFichaje/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "/home/dani/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
