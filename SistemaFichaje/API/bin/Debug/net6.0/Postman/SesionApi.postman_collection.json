@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "b4c7f17a-d565-4b93-9863-4d7d04f1326a",
-		"name": "Fichaje_Cuenta",
+		"_postman_id": "3a438fa2-789f-4e3d-b013-ba0bc7b423ab",
+		"name": "Fichaje_Sesion",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -24,14 +24,14 @@
 					"raw": "{\n        \"name\": \"LONG SLEEVE FITTED HEART STRIPED TOP WITH LONG SLEEVE\",\n        \"description\": \"Top ajustado de manga larga EXTRA LIFE, con tejido a rayas y detalle corazón central.\",\n        \"image\": \"/assets/images/items/product1/blue.jpg\",\n        \"colors\": \"blue/lime/pink\"\n    }"
 				},
 				"url": {
-					"raw": "https://localhost:7199/cuentas",
+					"raw": "https://localhost:7199/sesiones",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"cuentas"
+						"sesiones"
 					]
 				}
 			},
@@ -43,14 +43,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7199/cuentas/2",
+					"raw": "https://localhost:7199/sesiones/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"cuentas",
+						"sesiones",
 						"2"
 					]
 				}
@@ -70,17 +70,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"correo\": \"javiH@gmail.com\",\n    \"contrasena\": \"pass5\",\n    \"fechaCreacion\": \"2022-05-01T00:00:00\",\n    \"rol\": \"User\"\n}"
+					"raw": "{\n    \"idEmpleado\": 6,\n    \"fecha\": \"2022-05-01T00:00:00\",\n    \"hora\": \"19:39:51.9900000\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:7199/cuentas",
+					"raw": "https://localhost:7199/sesiones",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"cuentas"
+						"sesiones"
 					]
 				}
 			},
@@ -92,14 +92,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7199/cuentas/6",
+					"raw": "https://localhost:7199/sesiones/6",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"cuentas",
+						"sesiones",
 						"6"
 					]
 				}
@@ -119,18 +119,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"correo\": \"mariaT@gmail.com\",\n    \"contrasena\": \"pass7\",\n    \"fechaCreacion\": \"2022-05-01T00:00:00\",\n    \"rol\": \"User\"\n}"
+					"raw": "{\n    \"idEmpleado\": 3,\n    \"fecha\": \"2022-05-01T00:00:00\",\n    \"hora\": \"19:39:51.9900000\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:7199/cuentas/7",
+					"raw": "https://localhost:7199/sesiones/13",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7199",
 					"path": [
-						"cuentas",
-						"7"
+						"sesiones",
+						"13"
 					]
 				}
 			},

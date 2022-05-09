@@ -71,8 +71,10 @@ public class SesionesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
     public ActionResult<SesionDTO> Post([FromBody] BaseSesionDTO baseSesion)
     {
-
-        return Ok(_sesionService.Add(baseSesion));
+        BaseSesionDTO baseS = new BaseSesionDTO();
+        baseS.IdEmpleado = baseSesion.IdEmpleado;
+        baseS.Fecha = DateTime.Now;
+        return Ok(_sesionService.Add(baseS));
     }
 
     [HttpPut("{Id}")]

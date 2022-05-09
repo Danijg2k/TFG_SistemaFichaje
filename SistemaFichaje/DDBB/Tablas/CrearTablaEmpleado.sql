@@ -7,5 +7,8 @@ Edad INTEGER,
 Direccion VARCHAR(150),
 Puesto VARCHAR(50),
 Dni VARCHAR(9) UNIQUE,
+Correo VARCHAR(100) UNIQUE,
+HashPassword VARCHAR(MAX),
+Rol BIT,
 CONSTRAINT Pk_Empleado PRIMARY KEY(Id)
 );

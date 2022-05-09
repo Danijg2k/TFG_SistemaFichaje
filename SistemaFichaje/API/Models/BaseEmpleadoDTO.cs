@@ -9,4 +9,7 @@ public class BaseEmpleadoDTO
     public string Direccion { get; set; }
     public string Puesto { get; set; }
     public string Dni { get; set; }
+    public string Correo { get; set; }
+    public string HashPassword { get; set; }
+    public Boolean Rol { get; set; }
 }

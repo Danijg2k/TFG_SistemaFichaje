@@ -109,9 +109,7 @@
 /home/dani/AngularApps/AngularBase/API/bin/Debug/net6.0/BidApi.postman_collection.json
 /home/dani/AngularApps/AngularBase/API/bin/Debug/net6.0/ProductApi.postman_collection.json
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/appsettings.Development.json
-/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/BidApi.postman_collection.json
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/package-lock.json
-/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/ProductApi.postman_collection.json
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/appsettings.json
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Api
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Api.deps.json
@@ -164,3 +162,5 @@
 /home/dani/AngularApps/SistemaFichaje/API/obj/Debug/net6.0/Api.pdb
 /home/dani/AngularApps/SistemaFichaje/API/obj/Debug/net6.0/Api.genruntimeconfig.cache
 /home/dani/AngularApps/SistemaFichaje/API/obj/Debug/net6.0/ref/Api.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Postman/EmpleadoApi.postman_collection.json
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Postman/SesionApi.postman_collection.json

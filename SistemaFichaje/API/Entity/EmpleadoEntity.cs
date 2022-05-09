@@ -18,6 +18,10 @@ public class EmpleadoEntity
     public string Puesto { get; set; }
     [MaxLength(9)]
     public string Dni { get; set; }
+    [MaxLength(100)]
+    public string Correo { get; set; }
+    public string HashPassword { get; set; }
+    public Boolean Rol { get; set; }
     public int Id { get; set; }
 
 }

@@ -66,11 +66,17 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "default"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "default",
+						"disabled": true
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"David García Peña\",\n    \"edad\": 34,\n    \"direccion\": \"Calle Rosa\",\n    \"puesto\": \"Front End Developer\",\n    \"dni\": \"44444454G\"\n}"
+					"raw": "{\n    \"nombre\": \"Rosana Herce Calahorrano\",\n    \"edad\": 34,\n    \"direccion\": \"Calle Margarita\",\n    \"puesto\": \"Programadora .net\",\n    \"dni\": \"66777888J\",\n    \"correo\": \"rhercec@gmail.com\",\n    \"hashPassword\": \"hashPassword\",\n    \"rol\": false\n}"
 				},
 				"url": {
 					"raw": "https://localhost:7199/empleados",
@@ -119,7 +125,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"nombre\",\n    \"edad\": 24,\n    \"direccion\": \"dir\",\n    \"puesto\": \"puesto\",\n    \"dni\": \"01\"\n}"
+					"raw": "{\n    \"nombre\": \"Rosana Herce Calahorrano\",\n    \"edad\": 34,\n    \"direccion\": \"Calle Púrpura\",\n    \"puesto\": \"Programadora .net\",\n    \"dni\": \"66777888J\",\n    \"correo\": \"rhercec@gmail.com\",\n    \"hashPassword\": \"hashPassword\",\n    \"rol\": false\n}"
 				},
 				"url": {
 					"raw": "https://localhost:7199/empleados/6",

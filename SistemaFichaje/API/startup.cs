@@ -25,7 +25,6 @@ public class Startup
         {
             mc.AddProfile(new EmpleadoProfile());
             mc.AddProfile(new SesionProfile());
-            mc.AddProfile(new CuentaProfile());
         });
 
         IMapper mapper = mapperConfig.CreateMapper();
@@ -33,7 +32,6 @@ public class Startup
 
         services.AddSingleton<IEmpleadoService, EmpleadoService>();
         services.AddSingleton<ISesionService, SesionService>();
-        services.AddSingleton<ICuentaService, CuentaService>();
 
     }
 
