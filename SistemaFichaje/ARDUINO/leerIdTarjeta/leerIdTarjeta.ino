@@ -37,13 +37,13 @@ void setup() {
  
  
 void loop() {
+  
   // Si no hay una tarjeta cerca no sigue el programa
   if (!mfrc522.PICC_IsNewCardPresent()) {
     return;
   }
  
   // Si hay una tarjeta cerca, que la eleccione
-  // En caso contrario que no continúe
   if (!mfrc522.PICC_ReadCardSerial()) {
     return;
   }
@@ -62,7 +62,7 @@ void loop() {
   Serial.print("\nId de la tarjeta: ");
   Serial.print(idTarjeta);
 
-  
+
   // Detener el lector
   mfrc522.PICC_HaltA();
   // Detener la encriptación Crypto1
@@ -70,9 +70,14 @@ void loop() {
  
   Serial.println();
   Serial.println(F("Proceso finalizado. Ya puedes retirar la tarjeta del lector RFID"));
+
+  Serial.println("\n-*-*-*-*-*-*-*-");
+  Serial.println("Acerca para mostrar información de la tarjeta ");
+
+  delay(1000);
  
-  while (true);
- 
+  //while (true);
+
 }
 
  
