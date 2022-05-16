@@ -164,3 +164,10 @@
 /home/dani/AngularApps/SistemaFichaje/API/obj/Debug/net6.0/ref/Api.dll
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Postman/EmpleadoApi.postman_collection.json
 /home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Postman/SesionApi.postman_collection.json
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/home/dani/AngularApps/SistemaFichaje/API/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll

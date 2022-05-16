@@ -1,4 +1,5 @@
 using AutoMapper;
+using WebApi.Helpers;
 
 public class Startup
 {
@@ -32,6 +33,7 @@ public class Startup
 
         services.AddSingleton<IEmpleadoService, EmpleadoService>();
         services.AddSingleton<ISesionService, SesionService>();
+        services.AddSingleton<ILoginService, LoginService>();
 
     }
 
@@ -50,6 +52,8 @@ public class Startup
             app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
         }
+
+        app.UseMiddleware<JwtMiddleware>();
 
         app.UseCors(x => x
             .AllowAnyOrigin()

@@ -21,7 +21,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"name\": \"LONG SLEEVE FITTED HEART STRIPED TOP WITH LONG SLEEVE\",\n        \"description\": \"Top ajustado de manga larga EXTRA LIFE, con tejido a rayas y detalle corazón central.\",\n        \"image\": \"/assets/images/items/product1/blue.jpg\",\n        \"colors\": \"blue/lime/pink\"\n    }"
+					"raw": ""
 				},
 				"url": {
 					"raw": "https://localhost:7199/sesiones",
@@ -66,6 +66,12 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "default"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "default",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -119,10 +125,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"idEmpleado\": 3,\n    \"fecha\": \"2022-05-01T00:00:00\",\n    \"hora\": \"19:39:51.9900000\"\n}"
+					"raw": "{\n    \"idEmpleado\": 2,\n    \"fecha\": \"2022-05-01T00:00:00\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:7199/sesiones/13",
+					"raw": "https://localhost:7199/sesiones/11",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -130,7 +136,7 @@
 					"port": "7199",
 					"path": [
 						"sesiones",
-						"13"
+						"11"
 					]
 				}
 			},
