@@ -27,6 +27,7 @@ public class SesionesController : ControllerBase
     /// Returns all the Sesion
     /// </summary>
     /// <returns>Returns a list of <see cref="SesionDTO"/></returns>
+    [Authorize]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
     public ActionResult<SesionDTO> Get()

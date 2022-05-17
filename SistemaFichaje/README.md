@@ -1,3 +1,3 @@
 # AngularBase
 
-Este un ejemplo base de proyecto de angular. Utilizadlo tanto para las prácticas como para el examen.
+Página web realizada con Angular. Muestra los datos de la plantilla de una empresa, haciendo peticiones a la API y recogiendo los datos de la DDBB.

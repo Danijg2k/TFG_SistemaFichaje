@@ -9,7 +9,13 @@ public class AuthorizeAttribute : Attribute, IAuthorizationFilter
 {
     public void OnAuthorization(AuthorizationFilterContext context)
     {
-        EmpleadoDTO user = JsonConvert.DeserializeObject<EmpleadoDTO>(context.HttpContext.Items["X-User"].ToString());
+        EmpleadoDTO user = null;
+        try
+        {
+            user = JsonConvert.DeserializeObject<EmpleadoDTO>(context.HttpContext.Items["X-User"].ToString());
+        }
+        catch (SystemException) { }
+
         if (user == null)
         {
             context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };

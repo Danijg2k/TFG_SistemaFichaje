@@ -9,7 +9,7 @@ using System.Text;
 
 namespace PI.CursoAngular.API.Controllers
 {
-    [Route("api/login")]
+    [Route("api")]
     [ApiController]
     public class LoginController : ControllerBase
     {
