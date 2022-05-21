@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { subscribeOn } from 'rxjs';
+import { IResponse } from 'src/app/models/iresponse';
 import { Login } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -30,8 +31,12 @@ export class LoginComponent implements OnInit {
       usuario: this.loginForm.value.Email,
       contra: this.loginForm.value.Pass,
     };
-    this._login
-      .postLoginData(login)
-      .subscribe((data) => this._login.setCookie(data));
+
+    this._login.postLoginData<IResponse>(login).subscribe((res) => {
+      if (res.body != null) {
+        const token = res.body.response;
+        this._login.setCookie(token);
+      }
+    });
   }
 }
