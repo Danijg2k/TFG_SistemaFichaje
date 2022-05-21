@@ -1,0 +1,48 @@
+/* Colors and styles for links */
+#angularLink{
+  color:rgb(236, 55, 55);
+  text-decoration: none;
+}
+
+#angularLink:hover{
+  text-decoration: underline;
+}
+
+#bootstrapLink{
+  color:rgb(150, 71, 224);
+  text-decoration: none;
+}
+
+#bootstrapLink:hover{
+  text-decoration: underline;
+}
+
+#ngLink{
+  color:rgb(62, 111, 218);
+  text-decoration: none;
+}
+
+#ngLink:hover{
+  text-decoration: underline;
+}
+
+#materialLink{
+  color:rgb(201, 145, 43);
+  text-decoration: none;
+}
+
+#materialLink:hover{
+  text-decoration: underline;
+}
+
+
+/* Making Angular and Bootstrap links disappear and 'going up' link center. */
+@media only screen and (max-width: 400px) {
+  .links{
+    display:none;
+  }
+  #up{
+    float: none;
+    text-align: center;
+  }
+}

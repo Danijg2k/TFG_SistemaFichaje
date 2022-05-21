@@ -1,32 +1,26 @@
-<p>
-  <mat-form-field appearance="legacy">
-    <mat-label>Legacy form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="standard">
-    <mat-label>Standard form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Fill form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Outline form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
+<form class="rounded-3 bg-light position-absolute w-25 text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <!-- Logotipo página web -->
+  <img class="mb-4 m-auto" src="../../../favicon.ico" alt="" width="72" height="57">
+  <!-- Usuario -->
+  <p>
+    <mat-form-field appearance="outline" class="w-75">
+      <mat-label>Usuario</mat-label>
+      <input matInput type="email" placeholder="Introduce tu correo" formControlName="Email">
+      <mat-icon matSuffix>email</mat-icon>               <!-- Iconos de fonts.google.com -->
+    </mat-form-field>
+  </p>
+  <!-- Contraseña -->
+  <p>
+    <mat-form-field appearance="outline" class="w-75">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" placeholder="Introduce tu contraseña" formControlName="Pass">
+      <mat-icon matSuffix>password</mat-icon>
+    </mat-form-field>
+  </p>
+  <!-- Iniciar sesión -->
+  <button class="w-75 btn btn-primary m-auto" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+  <!-- Copyright -->
+  <p class="mt-5 mb-3 text-muted">Daniel Jiménez Gutiérrez &copy; 2022</p>
+</form>
+
+

@@ -1,0 +1,12 @@
+.about{
+  color: #ca7397;
+}
+
+.social{
+  color:#b2d38d;
+  text-decoration: none;
+}
+
+.social:hover{
+  text-decoration: underline;
+}
