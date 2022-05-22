@@ -17,7 +17,6 @@ import { AppRoutingModuleComponent } from './components/app-routing-module/app-r
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { FooterComponent } from './components/footer/footer.component';
-import { ErrorComponent } from './components/error/error.component';
 import { Comp1Component } from './components/comp1/comp1.component';
 import { Comp2Component } from './components/comp2/comp2.component';
 import { Comp3Component } from './components/comp3/comp3.component';
@@ -27,6 +26,7 @@ import { CookieHandlerService } from './services/cookie-handler.service';
 import { AccountComponent } from './components/account/account.component';
 import { EmpleadoService } from './services/empleado.service';
 import { TokenHandlerService } from './services/token-handler.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +34,13 @@ import { TokenHandlerService } from './services/token-handler.service';
     AppRoutingModuleComponent,
     LoginComponent,
     FooterComponent,
-    ErrorComponent,
     Comp1Component,
     Comp2Component,
     Comp3Component,
     HeaderComponent,
     MainComponent,
     AccountComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

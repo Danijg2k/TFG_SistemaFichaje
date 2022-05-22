@@ -27,6 +27,7 @@ public class EmpleadosController : ControllerBase
     /// Returns all the Empleado
     /// </summary>
     /// <returns>Returns a list of <see cref="EmpleadoDTO"/></returns>
+    [Authorize]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     public ActionResult<EmpleadoDTO> Get()

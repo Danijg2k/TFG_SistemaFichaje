@@ -1,1 +1,17 @@
-<p>comp1 works!</p>
+<div *ngFor="let e of empleados">
+  <h1>Datos personales</h1>
+
+  <p>Id: {{ e?.id }}</p>
+  <p>Nombre: {{ e?.nombre }}</p>
+  <p>Edad: {{ e?.edad }}</p>
+  <p>Dirección: {{ e?.direccion }}</p>
+  <p>Puesto: {{ e?.puesto }}</p>
+  <p>DNI: {{ e?.dni }}</p>
+
+  <h1>Datos de cuenta</h1>
+
+  <p>Correo: {{ e?.correo }}</p>
+  <p>HashPassword: {{ e?.hashPassword }}</p>
+  <p>Rol: {{ e?.rol }}</p>
+  <p>========================================</p>
+</div>
