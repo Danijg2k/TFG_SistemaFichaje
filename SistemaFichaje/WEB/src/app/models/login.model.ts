@@ -1,9 +1,9 @@
 export class Login {
-  Usuario: string;
-  Contra: string;
+  usuario: string;
+  contra: string;
 
   constructor() {
-    this.Usuario = '';
-    this.Contra = '';
+    this.usuario = '';
+    this.contra = '';
   }
 }
