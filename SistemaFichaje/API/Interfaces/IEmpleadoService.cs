@@ -11,6 +11,8 @@ public interface IEmpleadoService
 
     public EmpleadoDTO GetByID(int guid);
 
+    public EmpleadoDTO GetByUser(string email);
+
     public EmpleadoDTO Add(BaseEmpleadoDTO guid);
 
     public void Delete(int guid);

@@ -45,6 +45,11 @@ public class EmpleadoService : IEmpleadoService
         return _mapper.Map<EmpleadoDTO>(_context.Empleados.FirstOrDefault(x => x.Id == guid));
     }
 
+    public EmpleadoDTO GetByUser(string email)
+    {
+        return _mapper.Map<EmpleadoDTO>(_context.Empleados.FirstOrDefault(x => x.Correo == email));
+    }
+
     public EmpleadoDTO Modify(BaseEmpleadoDTO empleado, int guid)
     {
         var _mappedEmpleado = _mapper.Map<EmpleadoEntity>(empleado);

@@ -1,12 +1,6 @@
 form {
-  padding-top: 5vh;
-  top: 50%;
-  left: 50%;
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+  margin: auto;
+  margin-top: 10em;
+  margin-bottom: 10em;
 }
 
-body {
-  background-color: rgb(230, 109, 109);
-}

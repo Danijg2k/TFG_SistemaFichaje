@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class LoginService {
-  constructor(private http: HttpClient, private cookie: CookieService) {}
+  constructor(private http: HttpClient) {}
 
   postLoginData<T>(login: any): Observable<HttpResponse<T>> {
     const httpHeaders: HttpHeaders = this.getHeaders();
@@ -18,29 +18,8 @@ export class LoginService {
     });
   }
 
-  // Funciones Hardcodeadas YUPI
-  public setCookie(token: string) {
-    this.cookie.set('X-Token', token);
-  }
-
-  public getCookie() {
-    return this.cookie.get('X-Token');
-  }
-
-  public closeToken() {
-    this.cookie.delete('X-Token');
-  }
-
   public getHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders = new HttpHeaders();
     return httpHeaders;
   }
-
-  // getDecodedAccessToken(token: string): any {
-  //   try {
-  //     return jwt_decode(token);
-  //   } catch (Error) {
-  //     return null;
-  //   }
-  // }
 }

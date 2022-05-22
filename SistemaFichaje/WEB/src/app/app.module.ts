@@ -1,4 +1,4 @@
-// Angular
+// Angular base
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialExampleModule } from '../material.module';
 // Cookies
 import { CookieService } from 'ngx-cookie-service';
-// Components
+// Components / services
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './components/app-routing-module/app-routing.module';
 import { AppRoutingModuleComponent } from './components/app-routing-module/app-routing-module.component';
@@ -23,6 +23,10 @@ import { Comp2Component } from './components/comp2/comp2.component';
 import { Comp3Component } from './components/comp3/comp3.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './pages/main/main.component';
+import { CookieHandlerService } from './services/cookie-handler.service';
+import { AccountComponent } from './components/account/account.component';
+import { EmpleadoService } from './services/empleado.service';
+import { TokenHandlerService } from './services/token-handler.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { MainComponent } from './pages/main/main.component';
     Comp3Component,
     HeaderComponent,
     MainComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,13 @@ import { MainComponent } from './pages/main/main.component';
     BrowserAnimationsModule,
     MaterialExampleModule,
   ],
-  providers: [LoginService, CookieService],
+  providers: [
+    LoginService,
+    CookieService,
+    CookieHandlerService,
+    TokenHandlerService,
+    EmpleadoService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

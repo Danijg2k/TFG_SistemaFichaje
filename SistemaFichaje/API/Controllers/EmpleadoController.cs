@@ -34,12 +34,26 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.GetAll());
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("GetById/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<EmpleadoDTO> Get(int Id)
     {
         EmpleadoDTO result = _empleadoService.GetByID(Id);
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
+
+    }
+
+    [HttpGet("GetByEmail/{Email}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<EmpleadoDTO> Get(string Email)
+    {
+        EmpleadoDTO result = _empleadoService.GetByUser(Email);
 
         if (result == null)
             return NotFound();
