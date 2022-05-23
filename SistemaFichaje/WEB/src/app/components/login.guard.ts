@@ -12,7 +12,7 @@ import { CookieHandlerService } from '../services/cookie-handler.service';
 @Injectable({
   providedIn: 'root',
 })
-export class TokenGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(private _cookie: CookieHandlerService, private router: Router) {}
 
   canActivate(
@@ -23,10 +23,11 @@ export class TokenGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // Nos lleva de vuelta al login si no hay token (sesión cerrada)
-    // Con esto bloqueamos el acceso a la página web si no se tiene iniciada sesión
-    if (this._cookie.getCookie() == '') {
-      return this.router.navigate(['']).then(() => false);
+    // Si tenemos iniciada sesión e intentamos ir al login no podemos
+    // Nos va a redireccionar dentro de la página web
+    // Al tener iniciada sesión no tiene mucho sentido que podamos estar en el componente de login
+    if (this._cookie.getCookie() != '') {
+      return this.router.navigate(['/uno']).then(() => false);
     }
     return true;
   }

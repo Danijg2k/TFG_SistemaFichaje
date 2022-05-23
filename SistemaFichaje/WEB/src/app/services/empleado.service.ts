@@ -1,15 +1,28 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Empleado } from '../models/empleado.model';
+import { CookieHandlerService } from './cookie-handler.service';
 
 @Injectable()
 export class EmpleadoService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private _cookie: CookieHandlerService
+  ) {}
 
-  getEmpleadoData(): Observable<Empleado[]> {
-    return this.http.get<Empleado[]>(environment.API_URL + 'empleados');
+  getEmpleadoData(): Observable<any> {
+    const token = this._cookie.getCookie();
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get(environment.API_URL + 'empleados', {
+      headers: headers,
+    });
   }
 
   getUserEmpleadoData(email: string): Observable<Empleado> {
