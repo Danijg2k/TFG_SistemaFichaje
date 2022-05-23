@@ -49,8 +49,13 @@ namespace WebApi.Helpers
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                string userId = jwtToken.Claims.First(x => x.Type == "user").Value;
-                var user = _loginService.GetByUser(userId);
+                string userEmail = jwtToken.Claims.First(x => x.Type == "user").Value;
+
+                // Guardamos el email para comprobaciones más tarde
+                SingletonUser.getInstance().setEmail(userEmail);
+                //
+
+                var user = _loginService.GetByUser(userEmail);
                 context.Items["X-User"] = JsonConvert.SerializeObject(user);
             }
             catch

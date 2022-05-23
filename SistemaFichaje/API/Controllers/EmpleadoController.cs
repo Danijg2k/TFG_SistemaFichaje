@@ -32,6 +32,15 @@ public class EmpleadosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     public ActionResult<EmpleadoDTO> Get()
     {
+
+        // -->COMPROBACIONES<--
+        EmpleadoDTO emp = _empleadoService.GetByUser(SingletonUser.getInstance().getEmail());
+        // Si no es Admin que no pueda ver todos los usuarios
+        if (emp.Rol == false)
+        {
+            throw new Exception("Este usuario no puede ver datos relativos a toda la plantilla.");
+        }
+        //  --><--
         return Ok(_empleadoService.GetAll());
     }
 
@@ -41,6 +50,16 @@ public class EmpleadosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<EmpleadoDTO> Get(int Id)
     {
+
+        // -->COMPROBACIONES<--
+        EmpleadoDTO emp = _empleadoService.GetByUser(SingletonUser.getInstance().getEmail());
+        // Que un usuario no pueda ver datos de otro
+        if (emp.Id != Id && emp.Rol == false)
+        {
+            throw new Exception("Un usuario no puede ver datos relativos a otro.");
+        }
+        //  --><--
+
         EmpleadoDTO result = _empleadoService.GetByID(Id);
 
         if (result == null)
@@ -56,6 +75,16 @@ public class EmpleadosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<EmpleadoDTO> Get(string Email)
     {
+
+        // -->COMPROBACIONES<--
+        EmpleadoDTO emp = _empleadoService.GetByUser(SingletonUser.getInstance().getEmail());
+        // Que un usuario no pueda ver datos de otro
+        if (emp.Correo != Email && emp.Rol == false)
+        {
+            throw new Exception("Un usuario no puede ver datos relativos a otro.");
+        }
+        //  --><--
+
         EmpleadoDTO result = _empleadoService.GetByUser(Email);
 
         if (result == null)
