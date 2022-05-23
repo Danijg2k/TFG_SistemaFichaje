@@ -35,6 +35,7 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.GetAll());
     }
 
+    [Authorize]
     [HttpGet("GetById/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,6 +50,7 @@ public class EmpleadosController : ControllerBase
 
     }
 
+    [Authorize]
     [HttpGet("GetByEmail/{Email}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

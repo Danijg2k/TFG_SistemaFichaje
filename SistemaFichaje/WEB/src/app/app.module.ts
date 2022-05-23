@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Ng-Bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,6 +27,7 @@ import { AccountComponent } from './components/account/account.component';
 import { EmpleadoService } from './services/empleado.service';
 import { TokenHandlerService } from './services/token-handler.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     CookieHandlerService,
     TokenHandlerService,
     EmpleadoService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

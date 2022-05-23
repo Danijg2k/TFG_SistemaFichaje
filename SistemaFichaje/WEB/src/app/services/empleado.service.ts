@@ -13,15 +13,14 @@ export class EmpleadoService {
   ) {}
 
   getEmpleadoData(): Observable<any> {
-    const token = this._cookie.getCookie();
+    // const token = this._cookie.getCookie();
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
+    // const headers = new HttpHeaders({
+    //   Authorization: `Bearer ${token}`,
+    // });
 
     return this.http.get(environment.API_URL + 'empleados', {
-      headers: headers,
+      // headers: headers,
     });
   }
 
