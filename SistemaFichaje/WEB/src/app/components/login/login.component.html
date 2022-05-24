@@ -17,6 +17,8 @@
       <mat-icon matSuffix>password</mat-icon>
     </mat-form-field>
   </p>
+  <!-- Indicador mensaje error -->
+  <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ failMessage }}</p>
   <!-- Iniciar sesión -->
   <button class="w-75 btn btn-primary m-auto" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
   <!-- Copyright -->

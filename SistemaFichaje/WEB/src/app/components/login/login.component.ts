@@ -18,6 +18,8 @@ import { TokenHandlerService } from 'src/app/services/token-handler.service';
 export class LoginComponent implements OnInit {
   login: Login | null;
   empleado: Empleado | null;
+  failMessage: string;
+  visible: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +30,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.login = null;
     this.empleado = null;
+    this.failMessage = 'Usuario/Contraseña incorrectos';
+    this.visible = false;
   }
 
   ngOnInit(): void {
@@ -62,7 +66,9 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error);
+        this.failMessage = error;
+        this.visible = true;
+        this.loginForm.reset();
         //window.location.reload();
       }
     );
