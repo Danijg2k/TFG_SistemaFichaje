@@ -51,10 +51,6 @@ namespace WebApi.Helpers
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 string userEmail = jwtToken.Claims.First(x => x.Type == "user").Value;
 
-                // Guardamos el email para comprobaciones más tarde
-                SingletonUser.getInstance().setEmail(userEmail);
-                //
-
                 var user = _loginService.GetByUser(userEmail);
                 context.Items["X-User"] = JsonConvert.SerializeObject(user);
             }

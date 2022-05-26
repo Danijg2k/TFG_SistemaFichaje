@@ -8,20 +8,27 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
 import { CookieHandlerService } from '../cookie-handler.service';
+import { TokenHandlerService } from '../token-handler.service';
 
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
-  constructor(private _cookie: CookieHandlerService, private router: Router) {}
+  constructor(
+    private _cookie: CookieHandlerService,
+    private router: Router,
+    private _token: TokenHandlerService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = this._cookie.getCookie();
+    const email = this._token.getEmail();
     if (token) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
+          'X-Login': email,
         },
       });
     }
@@ -34,7 +41,10 @@ export class TokenInterceptorService implements HttpInterceptor {
           this._cookie.closeToken();
           this.router.navigate(['']).then(() => false);
         }
-        const error = err.error.message || err.statusText;
+        if (err.status === 0) {
+          return throwError('Servicio no disponible');
+        }
+        const error = err.error || err.statusText;
         return throwError(error);
       })
     );

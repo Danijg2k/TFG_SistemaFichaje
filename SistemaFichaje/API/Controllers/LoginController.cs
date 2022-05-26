@@ -31,18 +31,10 @@ namespace PI.CursoAngular.API.Controllers
         public IActionResult Login(BaseLoginDTO login)
         {
             var hash = "";
-            try
-            {
-                //Buscamos por usuario introducido y returneamos contraseña
-                hash = _loginService.GetByUser(login.Usuario).HashPassword;
-            }
-            catch
-            {
-                return BadRequest("Usuario no encontrado");
-            }
 
             try
             {
+                hash = _loginService.GetByUser(login.Usuario).HashPassword;
                 login.Contra = HashPassword.sha256(login.Contra);
 
                 //Verifica si hash de login coincide con hash de DDBB
@@ -62,7 +54,7 @@ namespace PI.CursoAngular.API.Controllers
             catch (Exception e)
             {
                 _logger.LogError("Login: " + e.Message, e);
-                return StatusCode((int)System.Net.HttpStatusCode.InternalServerError, e.Message);
+                return BadRequest("Usuario/Contraseña incorrectos");
             }
         }
 
