@@ -1,3 +1,21 @@
-.tab{
+.general {
+  padding-top: 16px;
+}
 
+
+
+.mat-tab-label-active .mat-tab-label-content {
+  color: white;
+}
+
+
+
+.mat-tab-nav-bar a:hover{
+  color: white;
+}
+
+
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #00d440;
 }

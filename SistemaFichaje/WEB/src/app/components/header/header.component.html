@@ -1,20 +1,58 @@
-<header>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <!-- Título web -->
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <strong>SISTEMA FICHAJE</strong>
-      </a>
-      <!--  -->
+<div class="">
+  <!-- Footer -->
+  <header class="text-center text-lg-end text-white" style="background-color: #3e4551">
+
+    <div class="general">
+      <div class="row w-100">
+        <div class="col">
+          <!--  -->
+          <div>
+            <p class="d-flex justify-content-center align-items-center">
+              <span class="me-3">SISTEMA DE FICHAJE</span>
+              <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://github.com/Danijg2k" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                </svg>
+              </a>
+            </p>
+          </div>
+          <!--  -->
+        </div>
+        <div class="col">
+          <!--  -->
+          <div class="d-flex justify-content-center">
+            <!-- <nav mat-tab-nav-bar class="central">
+              <a mat-tab-link routerLink="/uno">Primer componente</a>
+              <a mat-tab-link routerLink="/dos">Segundo componente</a>
+              <a mat-tab-link routerLink="/tres">Tercer componente</a>
+            </nav> -->
+            <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+              <a mat-tab-link *ngFor="let link of opciones; let indexOfLink=index"
+                  routerLink="{{rutas[indexOfLink]}}"
+                 (click)="activeLink = link"
+                 [active]="activeLink == link"> {{link}} </a>
+            </nav>
+            <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+          </div>
+          <!--  -->
+        </div>
+        <div class="col">
+          <!--  -->
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://github.com/Danijg2k" role="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </a>
+          </div>
+          <!--  -->
+        </div>
+      </div>
     </div>
-    <!-- Navegación header -->
-    <div class="tab">
-      <button class="tablinks" routerLink="/uno">Componente 1</button>
-      <button class="tablinks" routerLink="/dos">Componente 2</button>
-      <button class="tablinks" routerLink="/tres">Componente 3</button>
-      <button class="tablinks" routerLink="/account">Administración cuenta</button>
-    </div>
-    <!--  -->
-  </div>
-</header>
+
+    <hr class="mb-4" />
+
+  </header>
+</div>
 
