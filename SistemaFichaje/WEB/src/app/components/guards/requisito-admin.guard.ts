@@ -19,16 +19,24 @@ export class RequisitoAdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  ): Promise<boolean> {
     // SI NO HEMOS INICIADO SESIÓN NO NOS DEJA PASAR DEL LOGIN
-    return this._token.getEmpleado().subscribe((x) => {
-      return !x.rol
-        ? this.router.navigate(['/calendario']).then(() => false)
-        : true;
-    }) as any;
+    return new Promise<boolean>((resolve) => {
+      this._token
+        .getEmpleado()
+        .toPromise()
+        .then((res) => {
+          if (!res?.rol) {
+            this.router.navigate(['/calendario']);
+            resolve(false);
+          } else {
+            resolve(true);
+          }
+        })
+        .catch(() => {
+          this.router.navigate(['/calendario']);
+          resolve(false);
+        });
+    });
   }
 }
