@@ -17,22 +17,22 @@ const routes: Routes = [
   },
   {
     path: 'uno',
-    canActivate: [TokenGuard],
+    //canActivate: [TokenGuard] DESCOMENTAR, ESTO ES PARA PRUEBAS,
     component: Comp1Component,
   },
   {
     path: 'dos',
-    canActivate: [TokenGuard],
+    //canActivate: [TokenGuard] DESCOMENTAR, ESTO ES PARA PRUEBAS,
     component: Comp2Component,
   },
   {
     path: 'tres',
-    canActivate: [TokenGuard],
+    //canActivate: [TokenGuard] DESCOMENTAR, ESTO ES PARA PRUEBAS,
     component: Comp3Component,
   },
   {
     path: 'account',
-    canActivate: [TokenGuard],
+    //canActivate: [TokenGuard], DESCOMENTAR, ESTO ES PARA PRUEBAS
     component: AccountComponent,
   },
   {

@@ -29,7 +29,6 @@
             <nav mat-tab-nav-bar [tabPanel]="tabPanel">
               <a mat-tab-link *ngFor="let link of opciones; let indexOfLink=index"
                   routerLink="{{rutas[indexOfLink]}}"
-                 (click)="activeLink = link"
                  [active]="activeLink == link"> {{link}} </a>
             </nav>
             <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

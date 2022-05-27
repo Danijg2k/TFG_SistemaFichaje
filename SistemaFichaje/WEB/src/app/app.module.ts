@@ -28,6 +28,7 @@ import { EmpleadoService } from './services/empleado.service';
 import { TokenHandlerService } from './services/token-handler.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
+import { HelperServiceComponent } from './components/helper-service/helper-service.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TokenInterceptorService } from './services/interceptors/token-intercept
     MainComponent,
     AccountComponent,
     NotFoundComponent,
+    HelperServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,7 @@ import { TokenInterceptorService } from './services/interceptors/token-intercept
       useClass: TokenInterceptorService,
       multi: true,
     },
+    HelperServiceComponent,
   ],
   bootstrap: [AppComponent],
 })
