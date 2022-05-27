@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
           // console.log(this._token.getEmail());
           // console.log(this.empleado?.id);
           //
-          this.router.navigateByUrl('/uno');
+          this.router.navigateByUrl('/calendario');
         }
       },
       (error) => {

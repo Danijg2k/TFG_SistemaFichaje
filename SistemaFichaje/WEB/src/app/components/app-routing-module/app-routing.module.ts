@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from '../account/account.component';
-import { Comp1Component } from '../comp1/comp1.component';
-import { Comp2Component } from '../comp2/comp2.component';
-import { Comp3Component } from '../comp3/comp3.component';
-import { LoginGuard } from '../login.guard';
+import { CalendarioComponent } from '../calendario/calendario.component';
+import { EmpleadosComponent } from '../empleados/empleados.component';
+import { LoginGuard } from '../guards/login.guard';
+import { RequisitoAdminGuard } from '../guards/requisito-admin.guard';
+import { TokenGuard } from '../guards/token.guard';
 import { LoginComponent } from '../login/login.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
-import { TokenGuard } from '../token.guard';
+import { OverviewComponent } from '../overview/overview.component';
 
 const routes: Routes = [
   {
@@ -16,23 +17,23 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'uno',
-    //canActivate: [TokenGuard] DESCOMENTAR, ESTO ES PARA PRUEBAS,
-    component: Comp1Component,
+    path: 'empleados',
+    canActivate: [TokenGuard, RequisitoAdminGuard],
+    component: EmpleadosComponent,
   },
   {
-    path: 'dos',
-    //canActivate: [TokenGuard] DESCOMENTAR, ESTO ES PARA PRUEBAS,
-    component: Comp2Component,
+    path: 'calendario',
+    canActivate: [TokenGuard],
+    component: CalendarioComponent,
   },
   {
-    path: 'tres',
-    //canActivate: [TokenGuard] DESCOMENTAR, ESTO ES PARA PRUEBAS,
-    component: Comp3Component,
+    path: 'general',
+    canActivate: [TokenGuard],
+    component: OverviewComponent,
   },
   {
     path: 'account',
-    //canActivate: [TokenGuard], DESCOMENTAR, ESTO ES PARA PRUEBAS
+    canActivate: [TokenGuard],
     component: AccountComponent,
   },
   {

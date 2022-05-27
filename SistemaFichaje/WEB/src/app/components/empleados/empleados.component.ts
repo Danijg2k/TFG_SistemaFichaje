@@ -3,11 +3,11 @@ import { Empleado } from 'src/app/models/empleado.model';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
-  selector: 'app-comp1',
-  templateUrl: './comp1.component.html',
-  styleUrls: ['./comp1.component.css'],
+  selector: 'app-empleados',
+  templateUrl: './empleados.component.html',
+  styleUrls: ['./empleados.component.css'],
 })
-export class Comp1Component implements OnInit {
+export class EmpleadosComponent implements OnInit {
   empleados: Empleado[] | null;
 
   constructor(private _empleado: EmpleadoService) {

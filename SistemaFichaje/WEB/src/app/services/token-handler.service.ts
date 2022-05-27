@@ -39,4 +39,9 @@ export class TokenHandlerService {
   getEmpleado(): Observable<Empleado> {
     return this._empleado.getUserEmpleadoData(this.getEmail());
   }
+
+  // 4. Get Rol
+  // getRol(): string {
+  //   return this.getEmpleado().
+  // }
 }

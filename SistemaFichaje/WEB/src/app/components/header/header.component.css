@@ -2,11 +2,9 @@
   padding-top: 16px;
 }
 
-
-
-/* .mat-tab-label-active .mat-tab-label-content {
-  color: white;
-} */
+.head {
+  background-color: #3e4551;
+}
 
 .mat-tab-nav-bar a{
   color: rgb(189, 249, 253);

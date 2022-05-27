@@ -10,11 +10,15 @@ import { HelperServiceComponent } from '../helper-service/helper-service.compone
 })
 export class HeaderComponent implements OnInit {
   // Lo que se muestra en los elementos del menú
-  opciones = ['Primer componente', 'Segundo componente', 'Tercer componente'];
+  opciones = ['Empleados', 'Calendario', 'Vista general'];
   // Rutas elementos menú
-  rutas = ['/uno', '/dos', '/tres'];
+  rutas = ['/empleados', '/calendario', '/general'];
   // Nombres de los componentes a los que te lleva el menú
-  componentes = ['Comp1Component', 'Comp2Component', 'Comp3Component'];
+  componentes = [
+    'EmpleadosComponent',
+    'CalendarioComponent',
+    'OverviewComponent',
+  ];
   //
   activeLink: string;
   message: string;

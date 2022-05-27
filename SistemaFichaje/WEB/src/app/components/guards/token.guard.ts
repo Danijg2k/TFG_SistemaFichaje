@@ -7,7 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TokenHandlerService } from '../services/token-handler.service';
+import { TokenHandlerService } from 'src/app/services/token-handler.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,9 +23,7 @@ export class TokenGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // Nos lleva de vuelta al login si no hay token (sesión cerrada)
-    // Con esto bloqueamos el acceso a la página web si no se tiene iniciada sesión
-    console.log(this._token.getDecodedAccessToken());
+    // SI NO HEMOS INICIADO SESIÓN NO NOS DEJA PASAR DEL LOGIN
     if (this._token.getDecodedAccessToken() == null) {
       return this.router.navigate(['']).then(() => false);
     }

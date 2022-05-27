@@ -17,9 +17,6 @@ import { AppRoutingModuleComponent } from './components/app-routing-module/app-r
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { FooterComponent } from './components/footer/footer.component';
-import { Comp1Component } from './components/comp1/comp1.component';
-import { Comp2Component } from './components/comp2/comp2.component';
-import { Comp3Component } from './components/comp3/comp3.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './pages/main/main.component';
 import { CookieHandlerService } from './services/cookie-handler.service';
@@ -29,6 +26,9 @@ import { TokenHandlerService } from './services/token-handler.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 import { HelperServiceComponent } from './components/helper-service/helper-service.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
+import { OverviewComponent } from './components/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +36,14 @@ import { HelperServiceComponent } from './components/helper-service/helper-servi
     AppRoutingModuleComponent,
     LoginComponent,
     FooterComponent,
-    Comp1Component,
-    Comp2Component,
-    Comp3Component,
     HeaderComponent,
     MainComponent,
     AccountComponent,
     NotFoundComponent,
     HelperServiceComponent,
+    EmpleadosComponent,
+    CalendarioComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,
