@@ -16,6 +16,13 @@ export class AccountComponent implements OnInit {
   // Check if fields are editable
   canEditDireccion: boolean;
   canEditPuesto: boolean;
+  // Saving previous values
+  dir: string;
+  job: string;
+  // Boolean used for showing/hiding "same data" when confirming message
+  show: boolean;
+  // JSON sent with patch
+  jsonObject: JSON | null;
 
   constructor(
     private _empleado: EmpleadoService,
@@ -35,6 +42,10 @@ export class AccountComponent implements OnInit {
     });
     this.canEditDireccion = false;
     this.canEditPuesto = false;
+    this.dir = '';
+    this.job = '';
+    this.show = false;
+    this.jsonObject = null;
   }
 
   ngOnInit(): void {
@@ -44,19 +55,56 @@ export class AccountComponent implements OnInit {
   }
 
   loadData() {
+    // Saving field values for checking if there are changes
+    if (this.empleado != null) {
+      this.dir = this.empleado.direccion;
+      this.job = this.empleado.puesto;
+    }
+    // Initializing form
     this.accountForm = this.fb.group({
-      Id: [this.empleado?.id, Validators.required],
-      Nombre: [this.empleado?.nombre, Validators.required],
-      Edad: [this.empleado?.edad, Validators.required],
+      Id: [this.empleado?.id],
+      Nombre: [this.empleado?.nombre],
+      Edad: [this.empleado?.edad],
       Direccion: [this.empleado?.direccion, Validators.required],
       Puesto: [this.empleado?.puesto, Validators.required],
-      Dni: [this.empleado?.dni, Validators.required],
-      Email: [this.empleado?.correo, Validators.required],
-      Rol: [this.empleado?.rol ? 'Admin' : 'Usuario', Validators.required],
+      Dni: [this.empleado?.dni],
+      Email: [this.empleado?.correo],
+      Rol: [this.empleado?.rol ? 'Admin' : 'Usuario'],
     });
   }
 
-  onSubmit() {
-    // Actualizar datos del empleado
+  applyChanges() {
+    // Lo pasamos en formato JSON
+    if (this.empleado != null) {
+      let sameDir: boolean =
+        this.accountForm.value.Direccion == this.empleado.direccion;
+      let sameJob: boolean =
+        this.accountForm.value.Puesto == this.empleado.puesto;
+
+      if (sameDir && sameJob) {
+        // No changes -> warning that there aren't changes made
+        this.show = true;
+      } else {
+        var newDataJson = [];
+        // Apply changes and patch to DDBB
+        let arrayData: any = [];
+        if (!sameDir) {
+          newDataJson.push({
+            op: 'replace',
+            path: '/Direccion',
+            value: this.accountForm.value.Direccion,
+          });
+        }
+        if (!sameJob) {
+          newDataJson.push({
+            op: 'replace',
+            path: '/Puesto',
+            value: this.accountForm.value.Puesto,
+          });
+        }
+        this._empleado.modifyEmpleadoData(newDataJson, 1).subscribe();
+        window.location.reload();
+      }
+    }
   }
 }

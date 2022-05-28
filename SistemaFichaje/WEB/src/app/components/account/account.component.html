@@ -1,4 +1,4 @@
-<form class="rounded-3 bg-light w-50 text-center formAccount" [formGroup]="accountForm" (ngSubmit)="onSubmit()" autocomplete="off">
+<form class="rounded-3 bg-light w-50 text-center formAccount" [formGroup]="accountForm" (ngSubmit)="applyChanges()" autocomplete="off">
   <div class="general">
     <div class="row w-100">
 
@@ -76,6 +76,7 @@
         </p>
         <!-- Modificar datos -->
         <button class="w-75 btn btnModificar m-auto" type="submit" [disabled]="!accountForm.valid">Confirmar modificación</button>
+        <p [style.visibility]="show ? 'visible' : 'hidden'">No se han realizado cambios en tus datos</p>
       </div>
     </div>
   </div>

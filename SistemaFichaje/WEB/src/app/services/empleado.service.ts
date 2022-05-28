@@ -13,20 +13,19 @@ export class EmpleadoService {
   ) {}
 
   getEmpleadoData(): Observable<any> {
-    // const token = this._cookie.getCookie();
-
-    // const headers = new HttpHeaders({
-    //   Authorization: `Bearer ${token}`,
-    // });
-
-    return this.http.get(environment.API_URL + 'empleados', {
-      // headers: headers,
-    });
+    return this.http.get(environment.API_URL + 'empleados', {});
   }
 
   getUserEmpleadoData(email: string): Observable<Empleado> {
     return this.http.get<Empleado>(
       environment.API_URL + 'empleados/GetByEmail/' + email
+    );
+  }
+
+  modifyEmpleadoData(datosFormAccount: any, id: number): Observable<Empleado> {
+    return this.http.patch<Empleado>(
+      environment.API_URL + 'empleados/update/' + id,
+      datosFormAccount
     );
   }
 

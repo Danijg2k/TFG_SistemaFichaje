@@ -111,7 +111,8 @@ public class EmpleadosController : ControllerBase
 
 
     [HttpPatch("update/{Id}")]
-    public IActionResult Patch(int Id, [FromBody] JsonPatchDocument<EmpleadoDTO> personPatch)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
+    public ActionResult<EmpleadoDTO> Patch(int Id, [FromBody] JsonPatchDocument<EmpleadoDTO> personPatch)
     {
         if (personPatch != null)
         {

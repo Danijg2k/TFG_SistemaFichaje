@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
     this.activeLink = this.opciones[this.componentes.indexOf(this.message)];
     //
     this._token.getEmpleado().subscribe((x) => (this.empleado = x));
-    console.log(this.empleado?.rol);
+    //console.log(this.empleado?.rol);
     this.visibles = this.empleado?.rol
       ? [true, true, true]
       : [false, true, true];
