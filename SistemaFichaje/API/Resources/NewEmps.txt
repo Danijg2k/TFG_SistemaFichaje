@@ -1,0 +1,13 @@
+Ejemplos de empleados nuevos para creación mediante el formulario de la web:
+Nombre-Edad-Dirección-Puesto-DNI-Correo-Rol-Contraseña
+
+======================
+Arturo Fuentes Llosa
+28
+Calle Grande
+Back End Developer
+57897642R
+afuentesl@gmail.com
+User
+troya
+======================

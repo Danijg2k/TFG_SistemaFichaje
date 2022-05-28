@@ -8,6 +8,7 @@ import { RequisitoAdminGuard } from '../guards/requisito-admin.guard';
 import { TokenGuard } from '../guards/token.guard';
 import { LoginComponent } from '../login/login.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { NuevoEmpleadoComponent } from '../nuevo-empleado/nuevo-empleado.component';
 import { OverviewComponent } from '../overview/overview.component';
 
 const routes: Routes = [
@@ -16,11 +17,18 @@ const routes: Routes = [
     canActivate: [LoginGuard],
     component: LoginComponent,
   },
+  // Propias del Admin
   {
     path: 'empleados',
     canActivate: [TokenGuard, RequisitoAdminGuard],
     component: EmpleadosComponent,
   },
+  {
+    path: 'nuevaCuenta',
+    canActivate: [TokenGuard, RequisitoAdminGuard],
+    component: NuevoEmpleadoComponent,
+  },
+  // Todos los usuarios
   {
     path: 'calendario',
     canActivate: [TokenGuard],
@@ -36,10 +44,16 @@ const routes: Routes = [
     canActivate: [TokenGuard],
     component: AccountComponent,
   },
+  // Not found pages
   {
-    path: '**',
+    path: 'notFound',
     component: NotFoundComponent,
   },
+  {
+    path: '**',
+    redirectTo: '/notFound',
+  },
+  //
 ];
 
 @NgModule({

@@ -29,6 +29,7 @@ import { HelperServiceComponent } from './components/helper-service/helper-servi
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-empleado.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { OverviewComponent } from './components/overview/overview.component';
     EmpleadosComponent,
     CalendarioComponent,
     OverviewComponent,
+    NuevoEmpleadoComponent,
   ],
   imports: [
     BrowserModule,

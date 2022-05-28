@@ -16,10 +16,11 @@ export class AppComponent {
     private helper: HelperServiceComponent
   ) {}
 
-  isRoute(route: string) {
-    return this._router.url == route;
+  displayHeadFoot(): boolean {
+    return this._router.url == '/' || this._router.url == '/notFound'
+      ? false
+      : true;
   }
-  //
 
   public onRouterOutletActivate(event: any) {
     //console.log(event.constructor.name);

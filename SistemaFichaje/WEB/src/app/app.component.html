@@ -1,6 +1,6 @@
 <!-- Header (si estamos en el login (ruta '/') no se muestra) -->
-<app-header *ngIf="!isRoute('/')"></app-header>
+<app-header *ngIf="displayHeadFoot()"></app-header>
 <!-- Contenido principal -->
 <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
 <!-- Footer (si estamos en el login (ruta '/') no se muestra) -->
-<app-footer *ngIf="!isRoute('/')"></app-footer>
+<app-footer *ngIf="displayHeadFoot()"></app-footer>

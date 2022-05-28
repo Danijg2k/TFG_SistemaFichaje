@@ -29,24 +29,35 @@ export class EmpleadoService {
     );
   }
 
-  // postEmpleadoData(body: any): Empleado {
-  //   let bodyData = new Empleado();
-  //   bodyData.name = body.name;
-  //   bodyData.description = body.description;
-  //   bodyData.image = body.image;
+  // TODO
+  postEmpleadoData(body: any): Empleado {
+    let bodyData = new Empleado();
+    bodyData.nombre = body.Nombre;
+    bodyData.edad = body.Edad;
+    bodyData.direccion = body.Direccion;
+    bodyData.puesto = body.Puesto;
+    bodyData.dni = body.Dni;
+    bodyData.correo = body.Email;
+    // Pasamos la contraseña y la ciframos en el controller
+    bodyData.hashPassword = body.Pass;
+    if (body.Rol == 'Admin') {
+      bodyData.rol = true;
+    } else if (body.Rol == 'User') {
+      bodyData.rol = false;
+    }
 
-  //   let result = new Empleado();
-  //   this.http
-  //     .post<Empleado>(environment.API_URL + 'products', bodyData)
-  //     .subscribe(
-  //       (response) => {
-  //         console.log('response received');
-  //         result = response;
-  //       },
-  //       (error) => {
-  //         console.error('error caught in component');
-  //       }
-  //     );
-  //   return result;
-  // }
+    let result = new Empleado();
+    this.http
+      .post<Empleado>(environment.API_URL + 'empleados', bodyData)
+      .subscribe(
+        (response) => {
+          console.log('response received');
+          result = response;
+        },
+        (error) => {
+          console.error('error caught in component');
+        }
+      );
+    return result;
+  }
 }

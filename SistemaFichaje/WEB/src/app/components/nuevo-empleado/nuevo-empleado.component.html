@@ -1,0 +1,98 @@
+<form class="rounded-3 bg-light w-50 text-center formNewEmp" [formGroup]="newEmpForm" (ngSubmit)="createEmp()" autocomplete="off">
+  <div class="general">
+    <div class="row w-100">
+
+
+      <div class="col">
+        <!-- Columna 1 -->
+        <h2>Datos personales</h2>
+        <!-- Nombre -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Nombre y apellidos</mat-label>
+            <input matInput type="text" placeholder="Introduce nuevo nombre" formControlName="Nombre">
+          </mat-form-field>
+        </p>
+        <!-- Edad -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Edad</mat-label>
+            <input matInput type="number" placeholder="Introduce nueva edad" formControlName="Edad">
+          </mat-form-field>
+        </p>
+        <!-- Dirección -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Dirección</mat-label>
+            <input matInput type="text" placeholder="Introduce nueva dirección" formControlName="Direccion">
+          </mat-form-field>
+        </p>
+        <!-- Puesto -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Puesto de trabajo</mat-label>
+            <input matInput type="text" placeholder="Introduce nuevo puesto" formControlName="Puesto">
+          </mat-form-field>
+        </p>
+        <!-- DNI -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>DNI</mat-label>
+            <input matInput type="text" placeholder="Introduce nuevo DNI" formControlName="Dni">
+          </mat-form-field>
+        </p>
+      </div>
+
+
+      <div class="col">
+        <!-- Columna 2 -->
+        <h2>Datos cuenta</h2>
+        <!-- Correo -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Usuario (correo)</mat-label>
+            <input matInput type="email" placeholder="Introduce nuevo correo" formControlName="Email">
+          </mat-form-field>
+        </p>
+        <!-- Roles (Admin/User) -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Rol (Admin/User)</mat-label>
+            <input matInput type="select" placeholder="Introduce nuevo rol" formControlName="Rol">
+          </mat-form-field>
+        </p>
+        <!-- Contraseña y repetir contraseña -->
+        <h2>Contraseña</h2>
+        <p>
+          <mat-form-field appearance="outline" class="w-75">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hidePass ? 'password' : 'text'" placeholder="Introduce tu contraseña" formControlName="Pass">
+            <button type="button" mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+              <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="w-75">
+            <mat-label>Repite la contraseña</mat-label>
+            <input matInput [type]="hideRepeat ? 'password' : 'text'" placeholder="Introduce tu contraseña" formControlName="PassRep">
+            <button type="button" mat-icon-button matSuffix (click)="hideRepeat = !hideRepeat" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeat">
+              <mat-icon>{{hideRepeat ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Crear usuario -->
+  <button class="w-75 btn btnCrear m-auto" type="submit" [disabled]="!newEmpForm.valid">Crear cuenta</button>
+  <p [style.visibility]="show ? 'visible' : 'hidden'">No se han realizado cambios en tus datos</p>
+
+  <!-- Indicador mensaje error -->
+  <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ warnMessage }}</p>
+
+
+</form>
+
+

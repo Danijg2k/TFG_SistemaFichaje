@@ -96,6 +96,8 @@ public class EmpleadosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     public ActionResult<EmpleadoDTO> Post([FromBody] BaseEmpleadoDTO baseEmpleado)
     {
+        // Ciframos la contraseña que viene de la web
+        baseEmpleado.HashPassword = HashPassword.sha256(baseEmpleado.HashPassword);
 
         return Ok(_empleadoService.Add(baseEmpleado));
     }
