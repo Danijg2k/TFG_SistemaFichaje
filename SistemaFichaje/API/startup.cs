@@ -12,7 +12,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllersWithViews();
+        // La segunda parte (NewtonsoftJson) es poder hacer Patch utilizando la clase 'JsonPatchDocument'
+        services.AddControllersWithViews().AddNewtonsoftJson();
 
         // Para utilizar un solo context sin problemas cambiamos -> 'AddSingleton' por 'AddTransient' en la siguiente línea
         services.AddTransient<FichajeContext>(_ =>
@@ -34,6 +35,7 @@ public class Startup
         services.AddSingleton<IEmpleadoService, EmpleadoService>();
         services.AddSingleton<ISesionService, SesionService>();
         services.AddSingleton<ILoginService, LoginService>();
+
 
     }
 

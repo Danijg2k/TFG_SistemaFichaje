@@ -108,4 +108,23 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.Modify(baseEmpleado, Id));
     }
 
+
+
+    [HttpPatch("update/{Id}")]
+    public IActionResult Patch(int Id, [FromBody] JsonPatchDocument<EmpleadoDTO> personPatch)
+    {
+        if (personPatch != null)
+        {
+            var empleado = _empleadoService.GetByID(Id);
+
+            if (empleado != null)
+            {
+                personPatch.ApplyTo(empleado);
+                return Ok(_empleadoService.Modify(empleado, Id));
+            }
+        }
+
+        return BadRequest();
+    }
+
 }
