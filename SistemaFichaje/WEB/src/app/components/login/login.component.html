@@ -1,6 +1,6 @@
-<form class="rounded-3 bg-light w-25 text-center " [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+<form class="rounded-3 bg-light w-25 text-center formLogin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <!-- Logotipo página web -->
-  <img class="mb-4 m-auto" src="../../../favicon.ico" alt="" width="72" height="57">
+  <img class="mb-4 m-auto logoLogin" src="../../../favicon.ico" alt="Logotipo" width="72" height="57">
   <!-- Usuario -->
   <p>
     <mat-form-field appearance="outline" class="w-75">
@@ -13,16 +13,18 @@
   <p>
     <mat-form-field appearance="outline" class="w-75">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" placeholder="Introduce tu contraseña" formControlName="Pass">
-      <mat-icon matSuffix>password</mat-icon>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Introduce tu contraseña" formControlName="Pass">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
     </mat-form-field>
   </p>
   <!-- Indicador mensaje error -->
   <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ failMessage }}</p>
   <!-- Iniciar sesión -->
-  <button class="w-75 btn btn-primary m-auto" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+  <button class="w-75 btn btnIniciar m-auto" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
   <!-- Copyright -->
-  <p class="mt-5 mb-3 text-muted">Daniel Jiménez Gutiérrez &copy; 2022</p>
+  <p class="mt-5 mb-0 text-muted copy">Daniel Jiménez Gutiérrez &copy; 2022</p>
 </form>
 
 

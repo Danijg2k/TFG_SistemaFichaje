@@ -9,15 +9,12 @@ import { HelperServiceComponent } from './components/helper-service/helper-servi
 })
 export class AppComponent {
   title = 'base_project';
-  actualComp: string;
-
-  editMessage: string;
 
   //
-  constructor(private _router: Router, private helper: HelperServiceComponent) {
-    this.actualComp = '';
-    this.editMessage = '';
-  }
+  constructor(
+    private _router: Router,
+    private helper: HelperServiceComponent
+  ) {}
 
   isRoute(route: string) {
     return this._router.url == route;
@@ -28,8 +25,4 @@ export class AppComponent {
     //console.log(event.constructor.name);
     this.helper.changeMessage(event.constructor.name);
   }
-
-  // changeMessage() {
-  //   this.helper.changeMessage(this.editMessage.toUpperCase());
-  // }
 }

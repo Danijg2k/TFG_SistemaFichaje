@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   empleado: Empleado | null;
   failMessage: string;
   visible: boolean;
+  hide: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.empleado = null;
     this.failMessage = 'Usuario/Contraseña incorrectos';
     this.visible = false;
+    this.hide = true;
   }
 
   ngOnInit(): void {
@@ -50,18 +52,11 @@ export class LoginComponent implements OnInit {
       contra: this.loginForm.value.Pass,
     };
 
-    // TODO descomentar el refresh page cuando hay error, y quitar los console log
     this._login.postLoginData<IResponse>(login).subscribe(
       (res) => {
         if (res.body != null) {
           const token = res.body.response;
           this._cookie.setCookie(token);
-          //
-          // Logs para ver valores
-          // console.log(this._token.getDecodedAccessToken());
-          // console.log(this._token.getEmail());
-          // console.log(this.empleado?.id);
-          //
           this.router.navigateByUrl('/calendario');
         }
       },
@@ -69,7 +64,6 @@ export class LoginComponent implements OnInit {
         this.failMessage = error;
         this.visible = true;
         this.loginForm.reset();
-        //window.location.reload();
       }
     );
   }

@@ -1,0 +1,26 @@
+.logo {
+  width: 55px;
+  height: 50px;
+}
+
+.copy {
+  margin-bottom: 0px ;
+}
+
+.formAccount {
+  border: 0.5px solid #3e4551;
+  margin: auto;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+.btnIniciar {
+  background-color: #3e4551;
+  color: white;
+}
+
+.btnIniciar:hover {
+  background-color: black;
+  color: white;
+}

@@ -25,7 +25,7 @@ export class LoginGuard implements CanActivate {
     | UrlTree {
     // SI TENEMOS INICIADA SESIÓN NO PODEMOS VER EL LOGIN
     if (this._token.getDecodedAccessToken() != null) {
-      return this.router.navigate(['/uno']).then(() => false);
+      return this.router.navigate(['/calendario']).then(() => false);
     }
     return true;
   }

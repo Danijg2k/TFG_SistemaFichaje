@@ -1,14 +1,84 @@
-<h1>Datos personales</h1>
+<form class="rounded-3 bg-light w-50 text-center formAccount" [formGroup]="accountForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="general">
+    <div class="row w-100">
 
-<p>Id: {{ empleado?.id }}</p>
-<p>Nombre: {{ empleado?.nombre }}</p>
-<p>Edad: {{ empleado?.edad }}</p>
-<p>Dirección: {{ empleado?.direccion }}</p>
-<p>Puesto: {{ empleado?.puesto }}</p>
-<p>DNI: {{ empleado?.dni }}</p>
 
-<h1>Datos de cuenta</h1>
+      <div class="col">
+        <!-- Columna 1 -->
+        <h2>Datos personales</h2>
+        <!-- Id -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Tu Id de empleado</mat-label>
+            <input [readonly]=true matInput type="number" placeholder="Introduce nueva Id" formControlName="Id">
+          </mat-form-field>
+        </p>
+        <!-- Nombre -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Nombre</mat-label>
+            <input [readonly]=true matInput type="text" placeholder="Introduce nuevo nombre" formControlName="Nombre">
+          </mat-form-field>
+        </p>
+        <!-- Edad -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Edad</mat-label>
+            <input [readonly]=true matInput type="number" placeholder="Introduce nueva edad" formControlName="Edad">
+          </mat-form-field>
+        </p>
+        <!-- Dirección -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Dirección</mat-label>
+            <input [readonly]=true matInput type="text" placeholder="Introduce nueva dirección" formControlName="Direccion">
+            <mat-icon matSuffix>edit</mat-icon>               <!-- Iconos de fonts.google.com -->
+          </mat-form-field>
+        </p>
+        <!-- Puesto -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Puesto</mat-label>
+            <input [readonly]=true matInput type="text" placeholder="Introduce nuevo puesto" formControlName="Puesto">
+            <mat-icon matSuffix>edit</mat-icon>               <!-- Iconos de fonts.google.com -->
+          </mat-form-field>
+        </p>
+        <!-- DNI -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>DNI</mat-label>
+            <input [readonly]=true matInput type="text" placeholder="Introduce nuevo DNI" formControlName="Dni">
+          </mat-form-field>
+        </p>
+      </div>
 
-<p>Correo: {{ empleado?.correo }}</p>
-<p>HashPassword: {{ empleado?.hashPassword }}</p>
-<p>Rol: {{ empleado?.rol }}</p>
+
+      <div class="col">
+        <!-- Columna 2 -->
+        <h2>Datos cuenta</h2>
+        <!-- Correo -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Usuario</mat-label>
+            <input [readonly]=true matInput type="email" placeholder="Introduce nuevo correo" formControlName="Email">
+          </mat-form-field>
+        </p>
+        <!-- Roles (Admin/User) -->
+        <p>
+          <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
+            <mat-label>Rol</mat-label>
+            <input [readonly]=true matInput type="text" placeholder="Introduce nuevo rol" formControlName="Rol">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Indicador mensaje error -->
+  <!-- <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ failMessage }}</p> -->
+  <!-- Modificar datos -->
+  <!-- <button class="w-75 btn btnIniciar m-auto" type="submit" [disabled]="!accountForm.valid">Iniciar sesión</button> -->
+</form>
+
+
