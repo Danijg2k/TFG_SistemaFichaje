@@ -31,16 +31,20 @@
         <p>
           <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
             <mat-label>Dirección</mat-label>
-            <input [readonly]=true matInput type="text" placeholder="Introduce nueva dirección" formControlName="Direccion">
-            <mat-icon matSuffix>edit</mat-icon>               <!-- Iconos de fonts.google.com -->
+            <input [readonly]="!canEditDireccion" matInput type="text" placeholder="Introduce nueva dirección" formControlName="Direccion">
+            <button type="button" mat-icon-button matSuffix (click)="canEditDireccion = !canEditDireccion">
+              <mat-icon matSuffix>edit</mat-icon>               <!-- Iconos de fonts.google.com -->
+            </button>
           </mat-form-field>
         </p>
         <!-- Puesto -->
         <p>
           <mat-form-field hideRequiredMarker appearance="outline" class="w-75">
             <mat-label>Puesto</mat-label>
-            <input [readonly]=true matInput type="text" placeholder="Introduce nuevo puesto" formControlName="Puesto">
-            <mat-icon matSuffix>edit</mat-icon>               <!-- Iconos de fonts.google.com -->
+            <input [readonly]="!canEditPuesto" matInput type="text" placeholder="Introduce nuevo puesto" formControlName="Puesto">
+            <button type="button" mat-icon-button matSuffix (click)="canEditPuesto = !canEditPuesto">
+              <mat-icon matSuffix>edit</mat-icon>               <!-- Iconos de fonts.google.com -->
+            </button>
           </mat-form-field>
         </p>
         <!-- DNI -->
@@ -70,6 +74,8 @@
             <input [readonly]=true matInput type="text" placeholder="Introduce nuevo rol" formControlName="Rol">
           </mat-form-field>
         </p>
+        <!-- Modificar datos -->
+        <button class="w-75 btn btnModificar m-auto" type="submit" [disabled]="!accountForm.valid">Confirmar modificación</button>
       </div>
     </div>
   </div>
@@ -77,8 +83,8 @@
 
   <!-- Indicador mensaje error -->
   <!-- <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ failMessage }}</p> -->
-  <!-- Modificar datos -->
-  <!-- <button class="w-75 btn btnIniciar m-auto" type="submit" [disabled]="!accountForm.valid">Iniciar sesión</button> -->
+
+
 </form>
 
 

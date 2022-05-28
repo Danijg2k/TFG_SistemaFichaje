@@ -13,6 +13,9 @@ import { TokenHandlerService } from 'src/app/services/token-handler.service';
 export class AccountComponent implements OnInit {
   empleado: Empleado | null;
   accountForm: FormGroup;
+  // Check if fields are editable
+  canEditDireccion: boolean;
+  canEditPuesto: boolean;
 
   constructor(
     private _empleado: EmpleadoService,
@@ -30,6 +33,8 @@ export class AccountComponent implements OnInit {
       Email: [],
       Rol: [],
     });
+    this.canEditDireccion = false;
+    this.canEditPuesto = false;
   }
 
   ngOnInit(): void {

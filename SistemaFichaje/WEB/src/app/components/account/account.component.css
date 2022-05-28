@@ -15,12 +15,12 @@
   padding: 24px;
 }
 
-.btnIniciar {
+.btnModificar {
   background-color: #3e4551;
   color: white;
 }
 
-.btnIniciar:hover {
+.btnModificar:hover {
   background-color: black;
   color: white;
 }
