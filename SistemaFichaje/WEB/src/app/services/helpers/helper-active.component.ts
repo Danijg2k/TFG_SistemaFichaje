@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Component({
-  selector: 'app-helper-service',
-  templateUrl: './helper-service.component.html',
-  styleUrls: ['./helper-service.component.css'],
-})
-export class HelperServiceComponent implements OnInit {
+@Injectable()
+export class HelperActiveService implements OnInit {
   private message = new BehaviorSubject<string>('');
   public customMessage = this.message.asObservable();
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HelperServiceComponent } from './components/helper-service/helper-service.component';
+import { HelperActiveService } from './services/helpers/helper-active.component';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +11,7 @@ export class AppComponent {
   title = 'base_project';
 
   //
-  constructor(
-    private _router: Router,
-    private helper: HelperServiceComponent
-  ) {}
+  constructor(private _router: Router, private helper: HelperActiveService) {}
 
   displayHeadFoot(): boolean {
     return this._router.url == '/' || this._router.url == '/notFound'

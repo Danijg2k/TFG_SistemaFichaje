@@ -2,8 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado.model';
 import { CookieHandlerService } from 'src/app/services/cookie-handler.service';
+import { HelperActiveService } from 'src/app/services/helpers/helper-active.component';
 import { TokenHandlerService } from 'src/app/services/token-handler.service';
-import { HelperServiceComponent } from '../helper-service/helper-service.component';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   message: string;
 
   constructor(
-    private helper: HelperServiceComponent,
+    private helper: HelperActiveService,
     private _token: TokenHandlerService,
     private _cookie: CookieHandlerService,
     private router: Router

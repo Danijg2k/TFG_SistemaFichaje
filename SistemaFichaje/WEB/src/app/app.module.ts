@@ -25,11 +25,11 @@ import { EmpleadoService } from './services/empleado.service';
 import { TokenHandlerService } from './services/token-handler.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
-import { HelperServiceComponent } from './components/helper-service/helper-service.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-empleado.component';
+import { HelperActiveService } from './services/helpers/helper-active.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,6 @@ import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-emplea
     MainComponent,
     AccountComponent,
     NotFoundComponent,
-    HelperServiceComponent,
     EmpleadosComponent,
     CalendarioComponent,
     OverviewComponent,
@@ -63,12 +62,12 @@ import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-emplea
     CookieHandlerService,
     TokenHandlerService,
     EmpleadoService,
+    HelperActiveService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true,
     },
-    HelperServiceComponent,
   ],
   bootstrap: [AppComponent],
 })
