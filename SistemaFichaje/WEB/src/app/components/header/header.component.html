@@ -26,9 +26,12 @@
           <!--  -->
           <div class="d-flex justify-content-center element">
             <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-              <a mat-tab-link *ngFor="let link of opciones; let indexOfLink=index"
-                  routerLink="{{rutas[indexOfLink]}}"
-                  [active]="activeLink == link"> {{link}} </a>
+                <!-- OPCIÓN 1 -->
+                <a *ngIf="admin" mat-tab-link routerLink="/empleados" [active]="activeLink == 'Empleados'">Empleados</a>
+                <!-- OPCIÓN 2 -->
+                <a mat-tab-link routerLink="/calendario" [active]="activeLink == 'Calendario'">Calendario</a>
+                <!-- OPCIÓN 3 -->
+                <a mat-tab-link routerLink="/general" [active]="activeLink == 'Vista general'">Vista general</a>
             </nav>
             <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
           </div>
@@ -51,8 +54,12 @@
               <div class="dropdown-menu drop" aria-labelledby="dropdownMenuButton">
                 <button class="dropdown-item" routerLink="/account">Cuenta</button>
                 <hr>
-                <button class="dropdown-item" routerLink="/nuevaCuenta">Nuevo empleado</button>
-                <hr>
+                <!-- Este div solo se muestra si se es Admin -->
+                <div *ngIf="admin">
+                  <button class="dropdown-item" routerLink="/nuevaCuenta">Nuevo empleado</button>
+                  <hr>
+                </div>
+                <!--  -->
                 <button class="dropdown-item lo" (click)="cerrarSesion()">Cerrar sesión</button>
               </div>
 

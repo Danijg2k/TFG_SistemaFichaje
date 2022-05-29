@@ -29,7 +29,7 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-empleado.component';
-import { HelperActiveService } from './services/helpers/helper-active.component';
+import { HelperActiveService } from './services/helpers/helper-active';
 
 @NgModule({
   declarations: [

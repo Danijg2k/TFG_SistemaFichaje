@@ -1,13 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { subscribeOn } from 'rxjs';
 import { Empleado } from 'src/app/models/empleado.model';
 import { IResponse } from 'src/app/models/iresponse';
 import { Login } from 'src/app/models/login.model';
 import { CookieHandlerService } from 'src/app/services/cookie-handler.service';
 import { LoginService } from 'src/app/services/login.service';
-import { TokenHandlerService } from 'src/app/services/token-handler.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -15,7 +13,7 @@ import { TokenHandlerService } from 'src/app/services/token-handler.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   login: Login | null;
   empleado: Empleado | null;
   failMessage: string;
@@ -26,18 +24,13 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private _login: LoginService,
     private router: Router,
-    private _cookie: CookieHandlerService,
-    private _token: TokenHandlerService
+    private _cookie: CookieHandlerService
   ) {
     this.login = null;
     this.empleado = null;
     this.failMessage = 'Usuario/Contraseña incorrectos';
     this.visible = false;
     this.hide = true;
-  }
-
-  ngOnInit(): void {
-    //this._token.getEmpleado().subscribe((x) => (this.empleado = x));
   }
 
   loginForm = this.fb.group({

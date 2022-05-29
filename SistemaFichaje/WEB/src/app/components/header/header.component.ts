@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado.model';
 import { CookieHandlerService } from 'src/app/services/cookie-handler.service';
-import { HelperActiveService } from 'src/app/services/helpers/helper-active.component';
+import { HelperActiveService } from 'src/app/services/helpers/helper-active';
 import { TokenHandlerService } from 'src/app/services/token-handler.service';
 
 @Component({
@@ -23,6 +23,8 @@ export class HeaderComponent implements OnInit {
 
   activeLink: string;
   message: string;
+  empleado: Empleado | null;
+  admin: boolean;
 
   constructor(
     private helper: HelperActiveService,
@@ -32,9 +34,14 @@ export class HeaderComponent implements OnInit {
   ) {
     this.message = '';
     this.activeLink = '';
+    this.empleado = null;
+    this.admin = false;
   }
 
   ngOnInit(): void {
+    this._token
+      .getEmpleado()
+      .subscribe((x) => (this.empleado = x) && this.isAdmin());
     this.helper.customMessage.subscribe(
       (msg) => (this.message = msg) && this.checkActive()
     );
@@ -42,6 +49,12 @@ export class HeaderComponent implements OnInit {
 
   checkActive() {
     this.activeLink = this.opciones[this.componentes.indexOf(this.message)];
+  }
+
+  isAdmin() {
+    if (this.empleado != null) {
+      this.admin = this.empleado.rol;
+    }
   }
 
   cerrarSesion() {

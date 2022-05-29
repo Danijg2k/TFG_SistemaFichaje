@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HelperActiveService } from './services/helpers/helper-active.component';
+import { HelperActiveService } from './services/helpers/helper-active';
 
 @Component({
   selector: 'app-root',
