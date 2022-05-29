@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Empleado } from 'src/app/models/empleado.model';
+import { IResponse } from 'src/app/models/iresponse';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
@@ -14,6 +16,7 @@ export class NuevoEmpleadoComponent implements OnInit {
   hideRepeat: boolean;
   visible: boolean;
   warnMessage: string;
+  empleado: Empleado | null;
 
   constructor(private _empleado: EmpleadoService, private fb: FormBuilder) {
     this.newEmpForm = this.fb.group({
@@ -42,16 +45,19 @@ export class NuevoEmpleadoComponent implements OnInit {
     this.hideRepeat = true;
     this.visible = false;
     this.warnMessage = '';
+    this.empleado = null;
   }
 
   ngOnInit(): void {}
 
   createEmp() {
+    // Contraseñas iguales
     if (this.newEmpForm.value.Pass != this.newEmpForm.value.PassRep) {
       this.warnMessage = 'Las contraseñas no coinciden';
       this.visible = true;
       return;
     }
+    // Admin o User
     if (
       this.newEmpForm.value.Rol != 'Admin' &&
       this.newEmpForm.value.Rol != 'User'
@@ -60,8 +66,20 @@ export class NuevoEmpleadoComponent implements OnInit {
       this.visible = true;
       return;
     }
-    // TODO MOSTRAR EN MENSAJE SI SE HA CREADO CORRECTAMENTE (POST FUNCIONA)
-    this._empleado.postEmpleadoData(this.newEmpForm.value);
-    //
+
+    this._empleado.postEmpleadoData<IResponse>(this.newEmpForm.value).subscribe(
+      (res) => {
+        // Si se ha creado el empleado/cuenta correctamente
+        if (res.body != null) {
+          this.warnMessage = 'Cuenta añadida correctamente';
+          this.visible = true;
+        }
+      },
+      (error) => {
+        // Si se ha producido error
+        this.warnMessage = error;
+        this.visible = true;
+      }
+    );
   }
 }

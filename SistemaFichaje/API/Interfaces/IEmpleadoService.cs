@@ -13,6 +13,12 @@ public interface IEmpleadoService
 
     public EmpleadoDTO GetByUser(string email);
 
+    // Utilizados para ver si existen ya en el formulario de Account
+    public Boolean EmailExists(string email);
+
+    public Boolean DniExists(string dni);
+    //
+
     public EmpleadoDTO Add(BaseEmpleadoDTO guid);
 
     public void Delete(int guid);

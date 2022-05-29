@@ -30,7 +30,7 @@ export class EmpleadoService {
   }
 
   // TODO
-  postEmpleadoData(body: any): Empleado {
+  postEmpleadoData<T>(body: any): Observable<HttpResponse<T>> {
     let bodyData = new Empleado();
     bodyData.nombre = body.Nombre;
     bodyData.edad = body.Edad;
@@ -46,18 +46,8 @@ export class EmpleadoService {
       bodyData.rol = false;
     }
 
-    let result = new Empleado();
-    this.http
-      .post<Empleado>(environment.API_URL + 'empleados', bodyData)
-      .subscribe(
-        (response) => {
-          console.log('response received');
-          result = response;
-        },
-        (error) => {
-          console.error('error caught in component');
-        }
-      );
-    return result;
+    return this.http.post<T>(environment.API_URL + 'empleados', bodyData, {
+      observe: 'response',
+    });
   }
 }

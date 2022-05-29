@@ -96,11 +96,33 @@ public class EmpleadosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     public ActionResult<EmpleadoDTO> Post([FromBody] BaseEmpleadoDTO baseEmpleado)
     {
+        // Comprobamos si correo y dni existen
+        if (_empleadoService.EmailExists(baseEmpleado.Correo))
+        {
+            return BadRequest("Ese email ya está registrado");
+        }
+        if (_empleadoService.DniExists(baseEmpleado.Dni))
+        {
+            return BadRequest("Ese DNI ya está registrado");
+        }
         // Ciframos la contraseña que viene de la web
         baseEmpleado.HashPassword = HashPassword.sha256(baseEmpleado.HashPassword);
 
         return Ok(_empleadoService.Add(baseEmpleado));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     [HttpPut("{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]

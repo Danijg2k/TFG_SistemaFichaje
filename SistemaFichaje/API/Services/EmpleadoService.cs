@@ -50,6 +50,18 @@ public class EmpleadoService : IEmpleadoService
         return _mapper.Map<EmpleadoDTO>(_context.Empleados.FirstOrDefault(x => x.Correo == email));
     }
 
+    // Check if email exists in DDBB (UNIQUE Field)
+    public Boolean EmailExists(string email)
+    {
+        return _context.Empleados.Any(x => x.Correo == email) ? true : false;
+    }
+
+    // Check if DNI exists in DDBB (UNIQUE Field)
+    public Boolean DniExists(string dni)
+    {
+        return _context.Empleados.Any(x => x.Dni == dni) ? true : false;
+    }
+
     public EmpleadoDTO Modify(BaseEmpleadoDTO empleado, int guid)
     {
         var _mappedEmpleado = _mapper.Map<EmpleadoEntity>(empleado);
