@@ -1,20 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { Empleado } from 'src/app/models/empleado.model';
-import { EmpleadoService } from 'src/app/services/empleado.service';
+
+import { EmpService } from './country.service';
+import { EmpleadosSortableHeader, SortEventEmp } from './sortable.directive';
 
 @Component({
   selector: 'app-empleados',
   templateUrl: './empleados.component.html',
   styleUrls: ['./empleados.component.css'],
 })
-export class EmpleadosComponent implements OnInit {
-  empleados: Empleado[] | null;
+export class EmpleadosComponent {
+  empleados$: Observable<Empleado[]>;
+  total$: Observable<number>;
 
-  constructor(private _empleado: EmpleadoService) {
-    this.empleados = null;
+  @ViewChildren(EmpleadosSortableHeader)
+  headers!: QueryList<EmpleadosSortableHeader>;
+
+  constructor(public service: EmpService) {
+    this.empleados$ = service.empleados$;
+    this.total$ = service.total$;
   }
 
-  ngOnInit(): void {
-    this._empleado.getEmpleadoData().subscribe((x) => (this.empleados = x));
+  onSort({ column, direction }: SortEventEmp) {
+    // resetting other headers
+    this.headers.forEach((header) => {
+      if (header.sortable !== column) {
+        header.direction = '';
+      }
+    });
+
+    this.service.sortColumn = column;
+    this.service.sortDirection = direction;
   }
 }

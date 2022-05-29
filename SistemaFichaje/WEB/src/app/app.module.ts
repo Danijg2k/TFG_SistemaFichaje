@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule, DecimalPipe } from '@angular/common';
 // Ng-Bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Material Angular
@@ -30,6 +31,9 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { OverviewComponent } from './components/overview/overview.component';
 import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-empleado.component';
 import { HelperActiveService } from './services/helpers/helper-active';
+import { NgbdSortableHeader } from './components/table-complete/sortable.directive';
+import { NgbdTableComplete } from './components/table-complete/table-complete';
+import { EmpleadosSortableHeader } from './components/empleados/sortable.directive';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,15 @@ import { HelperActiveService } from './services/helpers/helper-active';
     CalendarioComponent,
     OverviewComponent,
     NuevoEmpleadoComponent,
+    // Los dos siguientes provisionales
+
+    //NgbdSortableHeader,
+    //NgbdTableComplete,
+
+    // Los dos siguientes los buenos
+
+    EmpleadosSortableHeader,
+    EmpleadosComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +68,7 @@ import { HelperActiveService } from './services/helpers/helper-active';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialExampleModule,
+    CommonModule,
   ],
   providers: [
     LoginService,
@@ -63,6 +77,7 @@ import { HelperActiveService } from './services/helpers/helper-active';
     TokenHandlerService,
     EmpleadoService,
     HelperActiveService,
+    DecimalPipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

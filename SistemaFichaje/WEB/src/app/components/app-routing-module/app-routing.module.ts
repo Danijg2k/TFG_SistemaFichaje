@@ -10,6 +10,7 @@ import { LoginComponent } from '../login/login.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { NuevoEmpleadoComponent } from '../nuevo-empleado/nuevo-empleado.component';
 import { OverviewComponent } from '../overview/overview.component';
+import { NgbdTableComplete } from '../table-complete/table-complete';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
     canActivate: [TokenGuard, RequisitoAdminGuard],
     component: EmpleadosComponent,
   },
+  // {
+  //   path: 'tabla',
+  //   component: NgbdTableComplete,
+  // },
   {
     path: 'nuevaCuenta',
     canActivate: [TokenGuard, RequisitoAdminGuard],

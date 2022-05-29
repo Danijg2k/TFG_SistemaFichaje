@@ -1,17 +1,53 @@
-<div *ngFor="let e of empleados">
-  <h1>Datos personales</h1>
+<form>
+  <div class="mb-3 row">
+    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+    <div class="col-xs-3 col-sm-auto">
+      <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm">
+    </div>
+    <span class="col col-form-label" *ngIf="service.loading$ | async">Loading...</span>
+  </div>
 
-  <p>Id: {{ e?.id }}</p>
-  <p>Nombre: {{ e?.nombre }}</p>
-  <p>Edad: {{ e?.edad }}</p>
-  <p>Dirección: {{ e?.direccion }}</p>
-  <p>Puesto: {{ e?.puesto }}</p>
-  <p>DNI: {{ e?.dni }}</p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" sortable="nombre" (sort)="onSort($event)">Nombre</th>
+      <th scope="col" sortable="edad" (sort)="onSort($event)">Edad</th>
+      <th scope="col" sortable="direccion" (sort)="onSort($event)">Dirección</th>
+      <th scope="col" sortable="puesto" (sort)="onSort($event)">Puesto</th>
+      <th scope="col" sortable="dni" (sort)="onSort($event)">Dni</th>
+      <th scope="col" sortable="correo" (sort)="onSort($event)">Correo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let emp of empleados$ | async">
+      <th scope="row">{{ emp.id }}</th>
+      <!-- Nombre -->
+      <td><ngb-highlight [result]="emp.nombre" [term]="service.searchTerm"></ngb-highlight></td>
+      <!-- Edad -->
+      <td><ngb-highlight [result]="emp.edad | number" [term]="service.searchTerm"></ngb-highlight></td>
+      <!-- Dirección -->
+      <td><ngb-highlight [result]="emp.direccion" [term]="service.searchTerm"></ngb-highlight></td>
+      <!-- Puesto -->
+      <td><ngb-highlight [result]="emp.puesto" [term]="service.searchTerm"></ngb-highlight></td>
+      <!-- DNI -->
+      <td><ngb-highlight [result]="emp.dni" [term]="service.searchTerm"></ngb-highlight></td>
+      <!-- Correo -->
+      <td><ngb-highlight [result]="emp.correo" [term]="service.searchTerm"></ngb-highlight></td>
+    </tr>
+    </tbody>
+  </table>
 
-  <h1>Datos de cuenta</h1>
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+    </ngb-pagination>
 
-  <p>Correo: {{ e?.correo }}</p>
-  <p>HashPassword: {{ e?.hashPassword }}</p>
-  <p>Rol: {{ e?.rol }}</p>
-  <p>========================================</p>
-</div>
+    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </div>
+
+</form>
