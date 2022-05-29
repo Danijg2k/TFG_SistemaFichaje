@@ -23,7 +23,6 @@ export class AppComponent {
   }
 
   public onRouterOutletActivate(event: any) {
-    //console.log(event.constructor.name);
     this.helper.changeMessage(event.constructor.name);
   }
 }

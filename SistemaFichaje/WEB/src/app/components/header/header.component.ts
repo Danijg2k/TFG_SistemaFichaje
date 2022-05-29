@@ -20,10 +20,7 @@ export class HeaderComponent implements OnInit {
     'CalendarioComponent',
     'OverviewComponent',
   ];
-  // Array usado para visibilidad
-  visibles: boolean[];
 
-  empleado: Empleado | null;
   activeLink: string;
   message: string;
 
@@ -35,8 +32,6 @@ export class HeaderComponent implements OnInit {
   ) {
     this.message = '';
     this.activeLink = '';
-    this.visibles = [];
-    this.empleado = null;
   }
 
   ngOnInit(): void {
@@ -47,17 +42,6 @@ export class HeaderComponent implements OnInit {
 
   checkActive() {
     this.activeLink = this.opciones[this.componentes.indexOf(this.message)];
-    //
-    this._token.getEmpleado().subscribe((x) => (this.empleado = x));
-    //console.log(this.empleado?.rol);
-    this.visibles = this.empleado?.rol
-      ? [true, true, true]
-      : [false, true, true];
-    //
-  }
-
-  isVisible(pos: number): boolean {
-    return this.visibles[pos];
   }
 
   cerrarSesion() {

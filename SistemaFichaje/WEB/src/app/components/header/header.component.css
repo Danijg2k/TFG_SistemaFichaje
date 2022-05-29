@@ -3,6 +3,8 @@
   padding-top: 16px;
 }
 
+
+/* Central nav menu styles */
 .head {
   background-color: #3e4551;
 }
@@ -16,10 +18,10 @@
   color: white;
 }
 
-
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
   background: white;
 }
+
 
 /* Center vertically elements header */
 .element {
@@ -28,16 +30,19 @@
   transform: translateY(-50%);
 }
 
+
 /* Remove outline from account button */
 .mod:focus{
   outline: none;
   box-shadow: none;
 }
 
+
 /* Margin for hr in dropdown menu */
 .drop hr {
   margin: 8px 0px 8px 0px;
 }
+
 
 /* Styles for dropdown buttons when hovered */
 .drop button:hover {
@@ -45,10 +50,10 @@
   color: #3e4551;
 }
 
-
 .drop button:last-child:hover {
   color: red;
 }
+
 
 /* Styles for dropdown buttons when focused */
 .drop button:focus {
