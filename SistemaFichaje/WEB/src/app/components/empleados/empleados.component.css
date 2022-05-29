@@ -1,0 +1,12 @@
+.firstRow {
+  background-color: rgb(153, 207, 157);
+}
+
+.rows {
+  background-color: white;
+}
+
+.sortable {  cursor: pointer;}
+.st-sort-ascent i,.st-sort-descent i {  padding-left: 4px;}
+.st-sort-ascent i:before {  content: '\25B2';}
+.st-sort-descent i:before {  content: '\25BC';}

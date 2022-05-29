@@ -31,8 +31,6 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { OverviewComponent } from './components/overview/overview.component';
 import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-empleado.component';
 import { HelperActiveService } from './services/helpers/helper-active';
-import { NgbdSortableHeader } from './components/table-complete/sortable.directive';
-import { NgbdTableComplete } from './components/table-complete/table-complete';
 import { EmpleadosSortableHeader } from './components/empleados/sortable.directive';
 
 @NgModule({
@@ -49,13 +47,6 @@ import { EmpleadosSortableHeader } from './components/empleados/sortable.directi
     CalendarioComponent,
     OverviewComponent,
     NuevoEmpleadoComponent,
-    // Los dos siguientes provisionales
-
-    //NgbdSortableHeader,
-    //NgbdTableComplete,
-
-    // Los dos siguientes los buenos
-
     EmpleadosSortableHeader,
     EmpleadosComponent,
   ],

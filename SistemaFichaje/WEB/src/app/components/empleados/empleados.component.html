@@ -1,26 +1,27 @@
 <form>
   <div class="mb-3 row">
-    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Busca por cualquier campo:</label>
     <div class="col-xs-3 col-sm-auto">
       <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm">
     </div>
-    <span class="col col-form-label" *ngIf="service.loading$ | async">Loading...</span>
+    <span class="col col-form-label" *ngIf="service.loading$ | async">Cargando</span>
   </div>
 
   <table class="table table-striped">
     <thead>
-    <tr>
-      <th scope="col">#</th>
+    <tr class="firstRow">
+      <th scope="col">Id</th>
       <th scope="col" sortable="nombre" (sort)="onSort($event)">Nombre</th>
       <th scope="col" sortable="edad" (sort)="onSort($event)">Edad</th>
       <th scope="col" sortable="direccion" (sort)="onSort($event)">Dirección</th>
       <th scope="col" sortable="puesto" (sort)="onSort($event)">Puesto</th>
       <th scope="col" sortable="dni" (sort)="onSort($event)">Dni</th>
       <th scope="col" sortable="correo" (sort)="onSort($event)">Correo</th>
+      <th scope="col" sortable="rol" (sort)="onSort($event)">Rol</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let emp of empleados$ | async">
+    <tr *ngFor="let emp of empleados$ | async" class="rows">
       <th scope="row">{{ emp.id }}</th>
       <!-- Nombre -->
       <td><ngb-highlight [result]="emp.nombre" [term]="service.searchTerm"></ngb-highlight></td>
@@ -34,6 +35,8 @@
       <td><ngb-highlight [result]="emp.dni" [term]="service.searchTerm"></ngb-highlight></td>
       <!-- Correo -->
       <td><ngb-highlight [result]="emp.correo" [term]="service.searchTerm"></ngb-highlight></td>
+      <!-- Rol -->
+      <td><ngb-highlight [result]="emp.rol ? 'Admin' : 'User'" [term]="service.searchTerm"></ngb-highlight></td>
     </tr>
     </tbody>
   </table>
@@ -44,9 +47,9 @@
     </ngb-pagination>
 
     <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-      <option [ngValue]="2">2 items per page</option>
-      <option [ngValue]="4">4 items per page</option>
-      <option [ngValue]="6">6 items per page</option>
+      <option [ngValue]="2">2 Items por página</option>
+      <option [ngValue]="4">4 Items por página</option>
+      <option [ngValue]="6">6 Items por página</option>
     </select>
   </div>
 
