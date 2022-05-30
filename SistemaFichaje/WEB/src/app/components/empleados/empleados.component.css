@@ -47,12 +47,24 @@
 
 .actualPage {
   width: fit-content;
+}
+
+/* Styles needed for setting same height for emps and pages divs */
+.pagination {
+  margin: 0px;
+  height: 100%;
+}
+
+.pagination a {
+  height: 100%;
+}
+
+/* Centering both divs row */
+.pagsEmps {
+  width: 95%;
   margin: auto;
 }
 
-input[type=number]{
-  width: 70px;
-}
 
 
 /* ngb-pagination .page-item.active .page-link {

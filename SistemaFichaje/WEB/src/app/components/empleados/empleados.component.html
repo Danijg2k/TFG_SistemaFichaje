@@ -48,19 +48,19 @@
     </tbody>
   </table>
 
-  <div class="p-2">
+  <div class="d-flex justify-content-between p-2 pagsEmps">
 
-    <select class="form-select m-auto" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
       <ng-container *ngFor="let numEmp of arrayNumEmpleados">
         <option *ngIf="numEmp % 5 == 0 && numEmp != arrayNumEmpleados.length" [ngValue]="numEmp">{{ numEmp }} Empleados</option>
-        <option *ngIf="numEmp == arrayNumEmpleados.length" [ngValue]="numEmp">Todos</option>
+        <option *ngIf="numEmp == arrayNumEmpleados.length" [ngValue]="numEmp">{{numEmp}} Empleados (Todos)</option>
       </ng-container>
     </select>
 
-    <br>
+    <!-- <br> -->
 
     <div class="actualPage">
-      <ngb-pagination
+      <ngb-pagination class="navigat"
         [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
       </ngb-pagination>
     </div>
