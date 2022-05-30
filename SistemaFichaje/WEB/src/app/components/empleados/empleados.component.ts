@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Empleado } from 'src/app/models/empleado.model';
 
-import { EmpService } from './country.service';
+import { EmpService } from './emp.service';
 import { EmpleadosSortableHeader, SortEventEmp } from './sortable.directive';
 
 @Component({

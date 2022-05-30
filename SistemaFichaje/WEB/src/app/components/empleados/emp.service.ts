@@ -4,7 +4,6 @@ import { Injectable, OnInit, PipeTransform } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 import { Empleado } from 'src/app/models/empleado.model';
-import { EMPLEADOS } from './countries';
 import { DecimalPipe } from '@angular/common';
 import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
 import { SortColumnEmp, SortDirectionEmp } from './sortable.directive';
@@ -70,14 +69,10 @@ export class EmpService {
     sortDirection: '',
   };
 
-  // private EMPLEADOS: Empleado[];
-
-  // ngOnInit(): void {
-  //   this._emps.getEmpleadoData().subscribe((x) => (this.EMPLEADOS = x));
-  // }
+  private EMPLEADOS: Empleado[] = [];
 
   constructor(private pipe: DecimalPipe, private _emps: EmpleadoService) {
-    //this.EMPLEADOS = [];
+    this._emps.getEmpleadoData().subscribe((x) => (this.EMPLEADOS = x));
 
     this._search$
       .pipe(
@@ -140,7 +135,7 @@ export class EmpService {
       this._state;
 
     // 1. sort
-    let empleados = sort(EMPLEADOS, sortColumn, sortDirection);
+    let empleados = sort(this.EMPLEADOS, sortColumn, sortDirection);
 
     // 2. filter
     empleados = empleados.filter((empleado) =>
