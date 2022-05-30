@@ -1,3 +1,4 @@
+/* Row styles */
 .firstRow {
   background-color: rgb(153, 207, 157);
 }
@@ -6,7 +7,67 @@
   background-color: white;
 }
 
+
+/* Default table styles */
 .sortable {  cursor: pointer;}
 .st-sort-ascent i,.st-sort-descent i {  padding-left: 4px;}
 .st-sort-ascent i:before {  content: '\25B2';}
 .st-sort-descent i:before {  content: '\25BC';}
+
+
+/* Center table and adjust width */
+.table {
+  width: 95%;
+  margin: auto;
+  margin-bottom: 8px;
+}
+
+.row {
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+}
+
+.whiteDiv {
+  background-color: white;
+}
+
+.btnInfo {
+  margin-right: 10px;
+}
+
+.btnInfo:hover {
+  background-color: black;
+}
+
+.btnInfo:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.actualPage {
+  width: fit-content;
+  margin: auto;
+}
+
+input[type=number]{
+  width: 70px;
+}
+
+
+/* ngb-pagination .page-item.active .page-link {
+  color: black;
+  background-color: rgb(153, 207, 157);
+  border-color: black;
+} */
+
+/* .page-item{
+  display:none;
+}
+.page-item:nth-child(1){
+  display:block;
+}
+.page-item:last-child{
+  display:block;
+} */
+

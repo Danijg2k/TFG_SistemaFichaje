@@ -1,13 +1,20 @@
 <form>
-  <div class="mb-3 row">
-    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Busca por cualquier campo:</label>
-    <div class="col-xs-3 col-sm-auto">
-      <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm">
+
+  <div class="mb-3">
+    <div class="row">
+
+      <div class="row whiteDiv border-secondary border-1 border rounded">
+        <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Buscar por cualquier campo:</label>
+        <div class="col-xs-3 col-sm-auto">
+          <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm">
+        </div>
+        <!-- <span class="col col-form-label" *ngIf="service.loading$ | async">Cargando</span> -->
+      </div>
+
     </div>
-    <span class="col col-form-label" *ngIf="service.loading$ | async">Cargando</span>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-responsive">
     <thead>
     <tr class="firstRow">
       <th scope="col">Id</th>
@@ -41,16 +48,23 @@
     </tbody>
   </table>
 
-  <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
-    </ngb-pagination>
+  <div class="p-2">
 
-    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-      <option [ngValue]="2">2 Items por página</option>
-      <option [ngValue]="4">4 Items por página</option>
-      <option [ngValue]="6">6 Items por página</option>
+    <select class="form-select m-auto" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <ng-container *ngFor="let numEmp of arrayNumEmpleados">
+        <option *ngIf="numEmp % 5 == 0 && numEmp != arrayNumEmpleados.length" [ngValue]="numEmp">{{ numEmp }} Empleados</option>
+        <option *ngIf="numEmp == arrayNumEmpleados.length" [ngValue]="numEmp">Todos</option>
+      </ng-container>
     </select>
+
+    <br>
+
+    <div class="actualPage">
+      <ngb-pagination
+        [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+      </ngb-pagination>
+    </div>
+
   </div>
 
 </form>
