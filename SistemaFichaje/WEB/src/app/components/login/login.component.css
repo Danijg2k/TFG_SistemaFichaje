@@ -1,26 +1,11 @@
-.logoLogin {
-  width: 55px;
-  height: 50px;
-}
-
-.copy {
-  margin-bottom: 0px ;
-}
-
-.formLogin {
-  margin: auto;
-  margin-top: 10em;
-  margin-bottom: 10em;
-  padding: 24px;
-  border: 0.5px solid #3e4551;
-}
-
 .btnIniciar {
   background-color: #3e4551;
-  color: white;
 }
 
 .btnIniciar:hover {
   background-color: black;
+}
+
+.btnIniciar, .btnIniciar:hover {
   color: white;
 }

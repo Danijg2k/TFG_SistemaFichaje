@@ -1,30 +1,40 @@
-<form class="rounded-3 bg-light w-25 text-center formLogin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
-  <!-- Logotipo página web -->
-  <img class="mb-4 m-auto logoLogin" src="../../../favicon.ico" alt="Logotipo" width="72" height="57">
-  <!-- Usuario -->
-  <p>
-    <mat-form-field appearance="outline" class="w-75">
-      <mat-label>Usuario</mat-label>
-      <input matInput type="email" placeholder="Introduce tu correo" formControlName="Email">
-      <mat-icon matSuffix>email</mat-icon>               <!-- Iconos de fonts.google.com -->
-    </mat-form-field>
-  </p>
-  <!-- Contraseña -->
-  <p>
-    <mat-form-field appearance="outline" class="w-75">
-      <mat-label>Contraseña</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Introduce tu contraseña" formControlName="Pass">
-      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-  </p>
-  <!-- Indicador mensaje error -->
-  <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ failMessage }}</p>
-  <!-- Iniciar sesión -->
-  <button class="w-75 btn btnIniciar m-auto" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
-  <!-- Copyright -->
-  <p class="mt-5 mb-0 text-muted copy">Daniel Jiménez Gutiérrez &copy; 2022</p>
-</form>
+<div class="modal modal-signin position-static d-block py-5">
+  <div class="modal-dialog">
+    <div class="modal-content border-dark">
+
+      <form class="rounded-3 text-center modal-body p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Logotipo página web -->
+        <img class="mb-4 logoLogin" src="../../../favicon.ico" alt="Logotipo" width="55" height="50">
+        <!-- Usuario -->
+        <p>
+          <mat-form-field appearance="outline" class="w-75">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="email" placeholder="Introduce tu correo" formControlName="Email">
+            <mat-icon matSuffix>email</mat-icon>               <!-- Iconos de fonts.google.com -->
+          </mat-form-field>
+        </p>
+        <!-- Contraseña -->
+        <p>
+          <mat-form-field appearance="outline" class="w-75">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Introduce tu contraseña" formControlName="Pass">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+        <!-- Indicador mensaje error -->
+        <p [style.visibility]="visible ? 'visible' : 'hidden'">{{ failMessage }}</p>
+        <!-- Iniciar sesión -->
+        <button class="w-75 btn btnIniciar" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+        <!-- Introducción -->
+        <p class="mt-5 text-muted textP">Visualiza tus fichajes de una forma práctica y sencilla.</p>
+        <!-- Copyright -->
+        <p class="mt-5 mb-0 text-muted copy textP">Daniel Jiménez Gutiérrez &copy; 2022</p>
+      </form>
+
+    </div>
+  </div>
+</div>
 
 
