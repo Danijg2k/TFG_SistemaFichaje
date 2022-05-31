@@ -43,14 +43,21 @@ function sort(
 }
 
 function matches(empleado: Empleado, term: string, pipe: PipeTransform) {
+  let aux = 'xxxxxxx';
+  if ('admin'.includes(term.toLowerCase())) {
+    aux = 'true';
+  }
+  if ('user'.includes(term.toLowerCase())) {
+    aux = 'false';
+  }
   return (
     empleado.nombre.toLowerCase().includes(term.toLowerCase()) ||
     pipe.transform(empleado.edad).includes(term) ||
     empleado.direccion.toLowerCase().includes(term.toLowerCase()) ||
     empleado.puesto.toLowerCase().includes(term.toLowerCase()) ||
     empleado.dni.toLowerCase().includes(term.toLowerCase()) ||
-    empleado.correo.toLowerCase().includes(term.toLowerCase())
-    //empleado.rol.toLowerCase().includes(term.toLowerCase())
+    empleado.correo.toLowerCase().includes(term.toLowerCase()) ||
+    empleado.rol.toString().toLowerCase().includes(aux.toLowerCase())
   );
 }
 
