@@ -1,55 +1,3 @@
-/* Row styles */
-.firstRow {
-  background-color: rgb(153, 207, 157);
-}
-
-.rows {
-  background-color: white;
-}
-
-
-/* Default table styles */
-.sortable {  cursor: pointer;}
-.st-sort-ascent i,.st-sort-descent i {  padding-left: 4px;}
-.st-sort-ascent i:before {  content: '\25B2';}
-.st-sort-descent i:before {  content: '\25BC';}
-
-
-/* Center table and adjust width */
-.table {
-  width: 95%;
-  margin: auto;
-  margin-bottom: 8px;
-  /* overflow-x: auto; */
-}
-
-.roww {
-  padding: 10px;
-  width: fit-content;
-  margin: auto;
-}
-
-.whiteDiv {
-  background-color: white;
-}
-
-.btnInfo {
-  margin-right: 10px;
-}
-
-.btnInfo:hover {
-  background-color: black;
-}
-
-.btnInfo:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.actualPage {
-  width: fit-content;
-}
-
 /* Styles needed for setting same height for emps and pages divs */
 .pagination {
   margin: 0px;
@@ -60,27 +8,71 @@
   height: 100%;
 }
 
-/* Centering both divs row */
-.pagsEmps {
-  width: 95%;
-  margin: auto;
+
+
+/* Style for camouflage modal-content */
+.inputSearch{
+  background-color: #c4f072;
 }
 
 
 
-/* ngb-pagination .page-item.active .page-link {
-  color: black;
-  background-color: rgb(153, 207, 157);
-  border-color: black;
-} */
+/* Styles for giving advice that headers of table are clickable */
+thead th:not(:first-child) {
+  cursor: pointer;
+}
 
-/* .page-item{
-  display:none;
+thead th:not(:first-child):hover {
+  background-color: #0d9df0;
 }
-.page-item:nth-child(1){
-  display:block;
+
+
+
+/* Styles for displaying well table in all kind of devices */
+@media (max-width: 992px) {
+  .correoHead, .correo {
+    display: none;
+  }
 }
-.page-item:last-child{
-  display:block;
-} */
+
+
+@media (max-width: 490px) {
+  .direccionHead, .direccion, .form-select {
+    display: none;
+  }
+  .navigat {
+    margin: auto;
+  }
+}
+
+
+@media (max-width: 415px) {
+  .dniHead, .dni {
+    display: none;
+  }
+}
+
+
+@media (max-width: 330px) {
+  .edadHead, .edad {
+    display: none;
+  }
+}
+
+
+
+/* Styles for accordion button */
+ngb-accordion .btn{
+  text-decoration: none;
+}
+
+ngb-accordion .btn:hover{
+  text-decoration: underline;
+}
+
+ngb-accordion .btn:focus {
+  box-shadow: none;
+}
+
+
 

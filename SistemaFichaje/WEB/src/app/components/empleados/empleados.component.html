@@ -1,70 +1,102 @@
-<form>
+<div class="modal modal-signin position-static d-block py-4">
+  <div class="modal-dialog modal-xl"> <!---->
 
-  <div class="mb-3">
-    <div class="row">
+    <!-- Div descripción -->
+    <div class="modal-content border-dark mb-5">
+      <!-- <p class="text-center modal-body m-0 fst-italic fw-bold desc fs-6">Cambiar esto con info tabla</p> -->
+      <ngb-accordion #acc="ngbAccordion">
+        <ngb-panel title="Información">
+          <ng-template ngbPanelContent>
+            Funcionalidades de la tabla:
+            <ul>
+              <li>Puedes <b>buscar cualquier valor</b> (numérico o cadena) con el <b>buscador</b>. La tabla filtrará los registros que coincidan con la búsqueda.</li>
+              <li>
+                Hacer click en la cabecera de la tabla (nombres de los campos) se <b>ordenarán</b> los empleados por dicho campo.
+                <ul>
+                  <li>1 click  -> ascendente</li>
+                  <li>2 clicks -> descendende</li>
+                  <li>3 clicks -> revertir</li>
+                </ul>
+              </li>
+              <li>En la parte inferior puedes elegir el <b>número de resultados a mostrar</b>, y cambiar el número de página.</li>
+            </ul>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
 
-      <div class="row roww whiteDiv border-secondary border-1 border rounded">
-        <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Buscar por cualquier campo:</label>
-        <div class="col-xs-3 col-sm-auto">
+
+    <!-- Input buscar campo -->
+    <div class="modal-content mb-5 border-0 inputSearch">
+      <div class="row m-auto">
+        <label for="table-complete-search" class="col-sm-auto col-form-label fst-italic">Busca cualquier valor:</label>
+        <div class="col-sm-auto">
           <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm">
         </div>
         <!-- <span class="col col-form-label" *ngIf="service.loading$ | async">Cargando</span> -->
       </div>
+    </div>
+
+
+    <!-- Div resto página -->
+    <div class="modal-content border-dark mb-5">
+
+      <div class="d-flex justify-content-between p-2 pagsEmps">
+        <!-- Select núm empleados por página -->
+        <select class="form-select w-auto" name="pageSize" [(ngModel)]="service.pageSize">
+          <ng-container *ngFor="let numEmp of arrayNumEmpleados">
+            <option *ngIf="numEmp % 5 == 0 && numEmp != arrayNumEmpleados.length" [ngValue]="numEmp">{{ numEmp }} Empleados</option>
+            <option *ngIf="numEmp == arrayNumEmpleados.length" [ngValue]="numEmp">{{numEmp}} Empleados (Todos)</option>
+          </ng-container>
+        </select>
+        <!-- Página actual -->
+        <ngb-pagination class="navigat rounded border-secondary border" [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+          <ng-template ngbPaginationFirst>Primera</ng-template>
+          <ng-template ngbPaginationLast>Última</ng-template>
+          <ng-template ngbPaginationPrevious>Anterior</ng-template>
+          <ng-template ngbPaginationNext>Siguiente</ng-template>
+          <ng-template ngbPaginationEllipsis>...</ng-template>
+          <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+        </ngb-pagination>
+      </div>
+
+
+      <table class="table table-responsive mb-0">
+        <thead>
+          <tr class="bg-info">
+            <th class="idHead" scope="col">Id</th>
+            <th class="nombreHead" scope="col" sortable="nombre" (sort)="onSort($event)">Nombre</th>
+            <th class="edadHead" scope="col" sortable="edad" (sort)="onSort($event)">Edad</th>
+            <th class="direccionHead" scope="col" sortable="direccion" (sort)="onSort($event)">Dirección</th>
+            <th class="puestoHead" scope="col" sortable="puesto" (sort)="onSort($event)">Puesto</th>
+            <th class="dniHead" scope="col" sortable="dni" (sort)="onSort($event)">Dni</th>
+            <th class="correoHead" scope="col" sortable="correo" (sort)="onSort($event)">Correo</th>
+            <th class="rolHead" scope="col" sortable="rol" (sort)="onSort($event)">Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of empleados$ | async" class="bg-secondary bg-opacity-50">
+            <th class="id" scope="row">{{ emp.id }}</th>
+            <!-- Nombre -->
+            <td class="nombre"><ngb-highlight [result]="emp.nombre" [term]="service.searchTerm"></ngb-highlight></td>
+            <!-- Edad -->
+            <td class="edad"><ngb-highlight [result]="emp.edad | number" [term]="service.searchTerm"></ngb-highlight></td>
+            <!-- Dirección -->
+            <td class="direccion"><ngb-highlight [result]="emp.direccion" [term]="service.searchTerm"></ngb-highlight></td>
+            <!-- Puesto -->
+            <td class="puesto"><ngb-highlight [result]="emp.puesto" [term]="service.searchTerm"></ngb-highlight></td>
+            <!-- DNI -->
+            <td class="dni"><ngb-highlight [result]="emp.dni" [term]="service.searchTerm"></ngb-highlight></td>
+            <!-- Correo -->
+            <td class="correo"><ngb-highlight [result]="emp.correo" [term]="service.searchTerm"></ngb-highlight></td>
+            <!-- Rol -->
+            <td class="rol"><ngb-highlight [result]="emp.rol ? 'Admin' : 'User'" [term]="service.searchTerm"></ngb-highlight></td>
+          </tr>
+        </tbody>
+      </table>
+
 
     </div>
   </div>
+</div>
 
-  <table class="table table-responsive">
-    <thead>
-    <tr class="firstRow">
-      <th scope="col">Id</th>
-      <th scope="col" sortable="nombre" (sort)="onSort($event)">Nombre</th>
-      <th scope="col" sortable="edad" (sort)="onSort($event)">Edad</th>
-      <th scope="col" sortable="direccion" (sort)="onSort($event)">Dirección</th>
-      <th scope="col" sortable="puesto" (sort)="onSort($event)">Puesto</th>
-      <th scope="col" sortable="dni" (sort)="onSort($event)">Dni</th>
-      <th scope="col" sortable="correo" (sort)="onSort($event)">Correo</th>
-      <th scope="col" sortable="rol" (sort)="onSort($event)">Rol</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let emp of empleados$ | async" class="rows">
-      <th scope="row">{{ emp.id }}</th>
-      <!-- Nombre -->
-      <td><ngb-highlight [result]="emp.nombre" [term]="service.searchTerm"></ngb-highlight></td>
-      <!-- Edad -->
-      <td><ngb-highlight [result]="emp.edad | number" [term]="service.searchTerm"></ngb-highlight></td>
-      <!-- Dirección -->
-      <td><ngb-highlight [result]="emp.direccion" [term]="service.searchTerm"></ngb-highlight></td>
-      <!-- Puesto -->
-      <td><ngb-highlight [result]="emp.puesto" [term]="service.searchTerm"></ngb-highlight></td>
-      <!-- DNI -->
-      <td><ngb-highlight [result]="emp.dni" [term]="service.searchTerm"></ngb-highlight></td>
-      <!-- Correo -->
-      <td><ngb-highlight [result]="emp.correo" [term]="service.searchTerm"></ngb-highlight></td>
-      <!-- Rol -->
-      <td><ngb-highlight [result]="emp.rol ? 'Admin' : 'User'" [term]="service.searchTerm"></ngb-highlight></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <div class="d-flex justify-content-between p-2 pagsEmps">
-
-    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-      <ng-container *ngFor="let numEmp of arrayNumEmpleados">
-        <option *ngIf="numEmp % 5 == 0 && numEmp != arrayNumEmpleados.length" [ngValue]="numEmp">{{ numEmp }} Empleados</option>
-        <option *ngIf="numEmp == arrayNumEmpleados.length" [ngValue]="numEmp">{{numEmp}} Empleados (Todos)</option>
-      </ng-container>
-    </select>
-
-    <!-- <br> -->
-
-    <div class="actualPage">
-      <ngb-pagination class="navigat"
-        [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
-      </ngb-pagination>
-    </div>
-
-  </div>
-
-</form>
