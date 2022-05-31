@@ -1,17 +1,13 @@
-.formAccount {
-  border: 0.5px solid #3e4551;
-  margin: auto;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  padding: 24px;
-}
-
+/* Styles for confirm button */
 .btnModificar {
   background-color: #3e4551;
-  color: white;
 }
 
 .btnModificar:hover {
   background-color: black;
+}
+
+.btnModificar, .btnModificar:hover {
   color: white;
 }
+/*  */

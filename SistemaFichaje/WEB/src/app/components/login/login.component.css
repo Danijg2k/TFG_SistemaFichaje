@@ -1,3 +1,4 @@
+/* Styles for login button */
 .btnIniciar {
   background-color: #3e4551;
 }
@@ -9,3 +10,4 @@
 .btnIniciar, .btnIniciar:hover {
   color: white;
 }
+/*  */

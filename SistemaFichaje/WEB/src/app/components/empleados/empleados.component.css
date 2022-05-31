@@ -20,6 +20,7 @@
   width: 95%;
   margin: auto;
   margin-bottom: 8px;
+  /* overflow-x: auto; */
 }
 
 .row {

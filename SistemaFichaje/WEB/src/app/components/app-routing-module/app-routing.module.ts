@@ -20,12 +20,12 @@ const routes: Routes = [
   // Propias del Admin
   {
     path: 'empleados',
-    canActivate: [TokenGuard, RequisitoAdminGuard],
+    // canActivate: [TokenGuard, RequisitoAdminGuard],
     component: EmpleadosComponent,
   },
   {
     path: 'nuevaCuenta',
-    canActivate: [TokenGuard, RequisitoAdminGuard],
+    // canActivate: [TokenGuard, RequisitoAdminGuard],
     component: NuevoEmpleadoComponent,
   },
   // Todos los usuarios
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    canActivate: [TokenGuard],
+    // canActivate: [TokenGuard],
     component: AccountComponent,
   },
   // Not found pages
