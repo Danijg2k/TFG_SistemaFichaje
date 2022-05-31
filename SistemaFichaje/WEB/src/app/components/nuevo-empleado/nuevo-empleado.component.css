@@ -1,17 +1,13 @@
-.formNewEmp {
-  border: 0.5px solid #3e4551;
-  margin: auto;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  padding: 24px;
-}
-
+/* Styles for create button */
 .btnCrear {
   background-color: #3e4551;
-  color: white;
 }
 
 .btnCrear:hover {
   background-color: black;
+}
+
+.btnCrear, .btnCrear:hover {
   color: white;
 }
+/*  */
