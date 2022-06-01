@@ -9,7 +9,7 @@ import { TokenGuard } from '../../services/guards/token.guard';
 import { LoginComponent } from '../login/login.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { NuevoEmpleadoComponent } from '../nuevo-empleado/nuevo-empleado.component';
-import { OverviewComponent } from '../overview/overview.component';
+import { ChartsComponent } from 'src/app/pages/charts/charts.component';
 
 const routes: Routes = [
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: 'general',
     canActivate: [TokenGuard],
-    component: OverviewComponent,
+    component: ChartsComponent,
   },
   {
     path: 'account',

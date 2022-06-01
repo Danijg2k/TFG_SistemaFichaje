@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialExampleModule } from '../material.module';
 // Cookies
 import { CookieService } from 'ngx-cookie-service';
+// Ng Charts
+import { NgChartsModule } from 'ng2-charts';
 // Components / services
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './components/app-routing-module/app-routing.module';
@@ -19,7 +21,6 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './pages/main/main.component';
 import { CookieHandlerService } from './services/cookie-handler.service';
 import { AccountComponent } from './components/account/account.component';
 import { EmpleadoService } from './services/empleado.service';
@@ -28,10 +29,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
-import { OverviewComponent } from './components/overview/overview.component';
 import { NuevoEmpleadoComponent } from './components/nuevo-empleado/nuevo-empleado.component';
 import { HelperActiveService } from './services/helpers/helper-active';
 import { EmpleadosSortableHeader } from './components/empleados/sortable.directive';
+import { ChartsComponent } from './pages/charts/charts.component';
+import { BarChartPuestoComponent } from './components/chart-components/bar-chart-puesto/bar-chart-puesto.component';
+import { LineChartHorasPresencialesComponent } from './components/chart-components/line-chart-horas-presenciales/line-chart-horas-presenciales.component';
+import { PieChartHorasMensualesComponent } from './components/chart-components/pie-chart-horas-mensuales/pie-chart-horas-mensuales.component';
+import { PolarChartFichajesMensualesComponent } from './components/chart-components/polar-chart-fichajes-mensuales/polar-chart-fichajes-mensuales.component';
 
 @NgModule({
   declarations: [
@@ -40,15 +45,18 @@ import { EmpleadosSortableHeader } from './components/empleados/sortable.directi
     LoginComponent,
     FooterComponent,
     HeaderComponent,
-    MainComponent,
     AccountComponent,
     NotFoundComponent,
     EmpleadosComponent,
     CalendarioComponent,
-    OverviewComponent,
     NuevoEmpleadoComponent,
     EmpleadosSortableHeader,
     EmpleadosComponent,
+    ChartsComponent,
+    BarChartPuestoComponent,
+    LineChartHorasPresencialesComponent,
+    PieChartHorasMensualesComponent,
+    PolarChartFichajesMensualesComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +68,7 @@ import { EmpleadosSortableHeader } from './components/empleados/sortable.directi
     BrowserAnimationsModule,
     MaterialExampleModule,
     CommonModule,
+    NgChartsModule,
   ],
   providers: [
     LoginService,
