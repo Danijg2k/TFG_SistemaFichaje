@@ -45,8 +45,7 @@
         <!-- Select núm empleados por página -->
         <select class="form-select w-auto" name="pageSize" [(ngModel)]="service.pageSize">
           <ng-container *ngFor="let numEmp of arrayNumEmpleados">
-            <option *ngIf="numEmp % 5 == 0 && numEmp != arrayNumEmpleados.length" [ngValue]="numEmp">{{ numEmp }} Empleados</option>
-            <option *ngIf="numEmp == arrayNumEmpleados.length" [ngValue]="numEmp">{{numEmp}} Empleados (Todos)</option>
+            <option *ngIf="numEmp % 5 == 0" [ngValue]="numEmp">{{ numEmp }} Empleados</option>
           </ng-container>
         </select>
         <!-- Página actual -->
