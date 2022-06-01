@@ -27,7 +27,7 @@ export class EmpleadosComponent implements OnInit {
   numEmpleados: number;
   arrayNumEmpleados: number[];
   // Utilizadas para mostrar las flechas de ordenación en la cabecera de la tabla
-  isDesc: boolean | null;
+  isAsc: boolean | null;
   field: string;
   //
 
@@ -45,7 +45,7 @@ export class EmpleadosComponent implements OnInit {
     this.total$ = service.total$;
     this.numEmpleados = 0;
     this.arrayNumEmpleados = [];
-    this.isDesc = null;
+    this.isAsc = null;
     this.field = '';
   }
 
@@ -72,17 +72,17 @@ export class EmpleadosComponent implements OnInit {
   changeArrow(property: string) {
     // If we click different one reset arrows
     if (this.field != property) {
-      this.isDesc = null;
+      this.isAsc = null;
     }
     // Save actual field clicked
     this.field = property;
     // Change arrows, or remove
-    if (this.isDesc == null) {
-      this.isDesc = true;
-    } else if (this.isDesc) {
-      this.isDesc = false;
-    } else if (!this.isDesc) {
-      this.isDesc = null;
+    if (this.isAsc == null) {
+      this.isAsc = true;
+    } else if (this.isAsc) {
+      this.isAsc = false;
+    } else if (!this.isAsc) {
+      this.isAsc = null;
     }
   }
 }
