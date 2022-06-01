@@ -1,78 +1,65 @@
-<div>
-  <!-- Header -->
-  <header class="text-center text-lg-end text-white head">
-
-    <div class="p-3">
-      <div class="row w-100">
-
-        <div class="col">
-          <!--  -->
-          <div class="element">
-            <p class="d-flex justify-content-center align-items-center">
-              <span class="me-3">SISTEMA DE FICHAJE</span>
-              <img class="logoHeader" src="../../../favicon.ico" alt="Logotipo" width="30" height="30">
-            </p>
-          </div>
-          <!--  -->
-        </div>
+<div class="container-fluid">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 mb-4 border-bottom text-lg-end text-white head">
 
 
-        <div class="col">
-          <!--  -->
-          <div class="d-flex justify-content-center element">
-            <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-                <!-- OPCIÓN 1 -->
-                <a *ngIf="admin" mat-tab-link routerLink="/empleados" [active]="activeLink == 'Empleados'">Empleados</a>
-                <!-- OPCIÓN 2 -->
-                <a mat-tab-link routerLink="/calendario" [active]="activeLink == 'Calendario'">Calendario</a>
-                <!-- OPCIÓN 3 -->
-                <a mat-tab-link routerLink="/general" [active]="activeLink == 'Vista general'">Vista general</a>
-            </nav>
-            <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-          </div>
-          <!--  -->
-        </div>
-
-
-        <div class="col">
-          <!--  -->
-          <div class="d-flex justify-content-center element">
-            <div class="dropdown">
-
-              <!-- Button dropdown -->
-              <button class="btn btn-outline-light btn-secondary mod" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                </svg>
-              </button>
-
-              <!-- Dropdown menu -->
-              <div class="dropdown-menu drop" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" routerLink="/account">Cuenta</button>
-                <hr>
-                <!-- Este div solo se muestra si se es Admin -->
-                <div *ngIf="admin">
-                  <button class="dropdown-item" routerLink="/nuevaCuenta">Nuevo empleado</button>
-                  <hr>
-                </div>
-                <!--  -->
-                <button class="dropdown-item lo" (click)="cerrarSesion()">Cerrar sesión</button>
-              </div>
-
-            </div>
-
-          </div>
-          <!--  -->
-
-
-        </div>
-
+      <!-- TERCIO 1 - NOMBRE Y LOGOTIPO -->
+      <div class="col-md-3">
+        <p class="d-flex justify-content-center align-items-center mb-0">
+          <span class="me-3">SISTEMA DE FICHAJE</span>
+          <img src="../../../favicon.ico" alt="Logotipo" width="30" height="30">
+        </p>
       </div>
-    </div>
 
-    <hr class="mb-4" />
+
+      <!-- TERCIO 2 - MENÚ NAVEGACIÓN -->
+      <div class="col-12 col-md-auto justify-content-center">
+        <div class="d-flex justify-content-center">
+          <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+              <!-- OPCIÓN 1 -->
+              <a *ngIf="admin" mat-tab-link routerLink="/empleados" [active]="activeLink == 'Empleados'">Empleados</a>
+              <!-- OPCIÓN 2 -->
+              <a mat-tab-link routerLink="/calendario" [active]="activeLink == 'Calendario'">Calendario</a>
+              <!-- OPCIÓN 3 -->
+              <a mat-tab-link routerLink="/general" [active]="activeLink == 'Vista general'">Vista general</a>
+          </nav>
+          <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+        </div>
+      </div>
+
+
+      <!-- TERCIO 3 - CUENTA -->
+      <div class="col-md-3">
+        <div class="d-flex justify-content-center">
+          <div class="dropdown">
+            <!-- Button dropdown -->
+            <button class="btn btn-outline-light btn-secondary shadow-none" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div class="dropdown-menu drop" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item" routerLink="/account">Cuenta</button>
+              <hr class="mt-1 mb-1">
+              <!-- Este div solo se muestra si se es Admin -->
+              <div *ngIf="admin">
+                <button class="dropdown-item" routerLink="/nuevaCuenta">Nuevo empleado</button>
+                <hr>
+              </div>
+              <!--  -->
+              <button class="dropdown-item " (click)="cerrarSesion()">Cerrar sesión</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
   </header>
 </div>
+
+
+
+
+
 

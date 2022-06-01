@@ -1,14 +1,14 @@
 /* Central nav menu styles */
-.head {
+.container-fluid {
   background-color: #3e4551;
 }
 
-.mat-tab-nav-bar a{
+.mat-tab-nav-bar a {
   color: rgb(189, 249, 253);
   opacity: 1;
 }
 
-.mat-tab-nav-bar a:hover{
+.mat-tab-nav-bar a:hover {
   color: white;
 }
 
@@ -17,29 +17,10 @@
 }
 
 
-/* Center vertically elements header */
-/* .element {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-} */
-
-
-/* Remove outline from account button */
-.mod:focus{
-  outline: none;
-  box-shadow: none;
-}
-
-
-/* Margin for hr in dropdown menu */
-.drop hr {
-  margin: 8px 0px 8px 0px;
-}
-
 
 /* Styles for dropdown buttons when hovered */
 .drop button:hover {
+  background-color: white;
   text-decoration: underline;
   color: #3e4551;
 }
@@ -49,7 +30,10 @@
 }
 
 
+
 /* Styles for dropdown buttons when focused */
 .drop button:focus {
   background-color: white;
+  color: black;
 }
+
