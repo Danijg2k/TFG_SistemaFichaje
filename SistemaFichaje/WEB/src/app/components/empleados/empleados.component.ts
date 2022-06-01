@@ -26,6 +26,9 @@ export class EmpleadosComponent implements OnInit {
   // Con estas dos variables podemos mostrar los filtros de x empleados
   numEmpleados: number;
   arrayNumEmpleados: number[];
+  // Utilizadas para mostrar las flechas de ordenación en la cabecera de la tabla
+  isDesc: boolean | null;
+  field: string;
   //
 
   ngOnInit() {
@@ -42,6 +45,8 @@ export class EmpleadosComponent implements OnInit {
     this.total$ = service.total$;
     this.numEmpleados = 0;
     this.arrayNumEmpleados = [];
+    this.isDesc = null;
+    this.field = '';
   }
 
   onSort({ column, direction }: SortEventEmp) {
@@ -62,5 +67,22 @@ export class EmpleadosComponent implements OnInit {
       { length: this.numEmpleados },
       (v, k) => k + 1
     );
+  }
+
+  changeArrow(property: string) {
+    // If we click different one reset arrows
+    if (this.field != property) {
+      this.isDesc = null;
+    }
+    // Save actual field clicked
+    this.field = property;
+    // Change arrows, or remove
+    if (this.isDesc == null) {
+      this.isDesc = true;
+    } else if (this.isDesc) {
+      this.isDesc = false;
+    } else if (!this.isDesc) {
+      this.isDesc = null;
+    }
   }
 }

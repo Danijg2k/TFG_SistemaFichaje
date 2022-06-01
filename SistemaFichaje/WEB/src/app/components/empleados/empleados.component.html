@@ -65,13 +65,83 @@
         <thead>
           <tr class="bg-info">
             <th class="idHead" scope="col">Id</th>
-            <th class="nombreHead" scope="col" sortable="nombre" (sort)="onSort($event)">Nombre</th>
-            <th class="edadHead" scope="col" sortable="edad" (sort)="onSort($event)">Edad</th>
-            <th class="direccionHead" scope="col" sortable="direccion" (sort)="onSort($event)">Dirección</th>
-            <th class="puestoHead" scope="col" sortable="puesto" (sort)="onSort($event)">Puesto</th>
-            <th class="dniHead" scope="col" sortable="dni" (sort)="onSort($event)">Dni</th>
-            <th class="correoHead" scope="col" sortable="correo" (sort)="onSort($event)">Correo</th>
-            <th class="rolHead" scope="col" sortable="rol" (sort)="onSort($event)">Rol</th>
+            <th class="nombreHead" scope="col" (click)="changeArrow('nombre')" sortable="nombre" (sort)="onSort($event)">
+              Nombre
+              <ng-container *ngIf="field == 'nombre'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
+            <th class="edadHead" scope="col" (click)="changeArrow('edad')" sortable="edad" (sort)="onSort($event)">
+              Edad
+              <ng-container *ngIf="field == 'edad'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
+            <th class="direccionHead" scope="col" (click)="changeArrow('direccion')" sortable="direccion" (sort)="onSort($event)">
+              Dirección
+              <ng-container *ngIf="field == 'direccion'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
+            <th class="puestoHead" scope="col" (click)="changeArrow('puesto')" sortable="puesto" (sort)="onSort($event)">
+              Puesto
+              <ng-container *ngIf="field == 'puesto'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
+            <th class="dniHead" scope="col" (click)="changeArrow('dni')" sortable="dni" (sort)="onSort($event)">
+              Dni
+              <ng-container *ngIf="field == 'dni'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
+            <th class="correoHead" scope="col" (click)="changeArrow('correo')" sortable="correo" (sort)="onSort($event)">
+              Correo
+              <ng-container *ngIf="field == 'correo'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
+            <th class="rolHead" scope="col" (click)="changeArrow('rol')" sortable="rol" (sort)="onSort($event)">
+              Rol
+              <ng-container *ngIf="field == 'rol'">
+                <span *ngIf="isDesc">
+                  ▼
+                </span>
+                <span *ngIf="isDesc==false">
+                  ▲
+                </span>
+              </ng-container>
+            </th>
           </tr>
         </thead>
         <tbody>
