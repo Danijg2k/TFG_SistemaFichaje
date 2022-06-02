@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule, DecimalPipe } from '@angular/common';
+import { CommonModule, DecimalPipe, DatePipe } from '@angular/common';
 // Ng-Bootstrap
 import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // Material Angular
@@ -90,6 +90,7 @@ import { SesionService } from './services/sesion.service';
     HelperActiveService,
     DecimalPipe,
     SesionService,
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

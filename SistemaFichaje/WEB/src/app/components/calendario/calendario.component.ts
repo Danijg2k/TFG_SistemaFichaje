@@ -28,6 +28,10 @@ import { SesionService } from 'src/app/services/sesion.service';
 import { Sesion } from 'src/app/models/sesion.model';
 import { Empleado } from 'src/app/models/empleado.model';
 import { EmpleadoService } from 'src/app/services/empleado.service';
+import { TokenHandlerService } from 'src/app/services/token-handler.service';
+import { SesionEmp } from 'src/app/models/sesionEmp.model';
+import { DatePipe } from '@angular/common';
+import { EventColor } from 'calendar-utils';
 
 const colors: any = {
   red: {
@@ -41,6 +45,14 @@ const colors: any = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA',
+  },
+  green: {
+    primary: '#34eb49',
+    secondary: '#c4edbe',
+  },
+  purple: {
+    primary: '#8e67bf',
+    secondary: '#e9d2f7',
   },
 };
 
@@ -99,67 +111,80 @@ export class CalendarioComponent implements OnInit {
 
   refresh = new Subject<void>();
 
-  // events: CalendarEvent[] = [
-  //   {
-  //     start: startOfDay(new Date()),
-  //     title: 'An event with no end date',
-  //     color: colors.yellow,
-  //     actions: this.actions,
-  //   },
-  //   {
-  //     start: startOfDay(new Date()),
-  //     title: 'An event with no end date',
-  //     color: colors.yellow,
-  //     actions: this.actions,
-  //   },
-  // ];
-
-  fichajes: Sesion[] | null;
-  fichaje: Sesion | null;
-  empleado: Empleado | null;
+  // Variables utilizadas para cargar datos
+  fichajes: SesionEmp[];
   events: CalendarEvent[];
+  idEmpActual: number;
+  empleado: Empleado | null;
+  //
 
   activeDayIsOpen: boolean = true;
 
   constructor(
     private modal: NgbModal,
     private _sesion: SesionService,
-    private _empleado: EmpleadoService
+    private _empleado: EmpleadoService,
+    private _token: TokenHandlerService,
+    public datepipe: DatePipe
   ) {
     this.modalData = {
       action: '',
       event: null,
     };
-    this.fichajes = null;
-    this.fichaje = null;
-    this.empleado = null;
     this.events = [];
+    this.idEmpActual = 0;
+    this.fichajes = [];
+    this.empleado = null;
   }
 
   ngOnInit(): void {
-    this._sesion.getAllSesions().subscribe((x) => {
-      this.fichajes = x;
-      // Para cada fichaje en la DDBB
-      this.fichajes?.forEach((fich) => {
-        this.fichaje = fich;
-        // Recogemos el empleado que la ha realizado
-        this._empleado
-          .getEmpleadoById(this.fichaje.idEmpleado)
-          .subscribe((y) => (this.empleado = y));
-        // E introducimos un evento con sus datos
-        if (this.fichaje?.fecha != null) {
-          console.log(
-            `${this.fichaje.fecha} - IdEmp: ${this.fichaje.idEmpleado} - ${this.empleado?.nombre} - ${this.empleado?.dni}`
-          );
-          this.events.push({
-            start: this.fichaje.fecha,
-            title: `${this.fichaje.fecha} - IdEmp: ${this.fichaje.idEmpleado} - ${this.empleado?.nombre} - ${this.empleado?.dni}`,
-            color: colors.yellow,
-            actions: this.actions,
-          });
-        }
+    this._token
+      .getEmpleado()
+      .subscribe((x) => (this.empleado = x) && this.checkAdminUser());
+  }
+
+  checkAdminUser() {
+    if (this.empleado?.rol) {
+      this.loadAdminData();
+    } else {
+      this.loadUserData();
+    }
+  }
+
+  loadAdminData() {
+    if (this.empleado != null) {
+      this._sesion
+        .getSesionsEmp()
+        .subscribe((y) => (this.fichajes = y) && this.loadData());
+    }
+  }
+
+  loadUserData() {
+    if (this.empleado != null) {
+      this._sesion
+        .getSesionsOfEmp(this.empleado.id)
+        .subscribe((y) => (this.fichajes = y) && this.loadData());
+    }
+  }
+
+  loadData() {
+    this.fichajes.forEach((x) => {
+      // Procedemos a crear todos los eventos
+      console.log(x.fecha + '/' + startOfDay(new Date()));
+      const d = new Date(x.fecha);
+      const t = this.empleado?.rol
+        ? `${d.toLocaleTimeString('es-Es')} - ${x.nombre}`
+        : `${d.toLocaleTimeString('es-Es')} - ${x.nombre}`;
+      this.events.push({
+        start: d,
+        title: t,
+        color: this.giveColor(x.idEmpleado),
+        actions: this.actions,
       });
+      //
     });
+    // Para que carguen los eventos correctamente en nuestra página
+    this.refresh.next();
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -192,6 +217,27 @@ export class CalendarioComponent implements OnInit {
       return iEvent;
     });
     this.handleEvent('Dropped or resized', event);
+  }
+
+  giveColor(id: number): EventColor {
+    const aux = id % 5;
+    switch (aux) {
+      case 0:
+        return colors.red;
+        break;
+      case 1:
+        return colors.blue;
+        break;
+      case 2:
+        return colors.yellow;
+        break;
+      case 3:
+        return colors.green;
+        break;
+      default:
+        return colors.purple;
+        break;
+    }
   }
 
   handleEvent(action: string, event: CalendarEvent): void {

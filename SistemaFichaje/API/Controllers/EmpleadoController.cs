@@ -43,7 +43,7 @@ public class EmpleadosController : ControllerBase
     public ActionResult<EmpleadoDTO> Get(int Id)
     {
 
-        EmpleadoCheck.isSameUser(_empleadoService, HttpContext, Id);
+        // EmpleadoCheck.isSameUser(_empleadoService, HttpContext, Id);
         EmpleadoDTO result = _empleadoService.GetByID(Id);
 
         if (result == null)

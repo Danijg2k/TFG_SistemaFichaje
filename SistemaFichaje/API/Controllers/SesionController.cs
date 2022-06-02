@@ -9,17 +9,18 @@ public class SesionesController : ControllerBase
 {
     private readonly ILogger<SesionesController> _logger;
     private readonly ISesionService _sesionService;
-
+    private readonly ISesionEmpService _sesionEmpService;
 
     /// <summary>
     /// It creates a sesionController
     /// </summary>
     /// <param name="logger">used for logging</param>
     /// <param name="sesionService">used for dealing with the sesion data</param>
-    public SesionesController(ILogger<SesionesController> logger, ISesionService sesionService)
+    public SesionesController(ILogger<SesionesController> logger, ISesionService sesionService, ISesionEmpService sesionEmpService)
     {
         _logger = logger;
         _sesionService = sesionService;
+        _sesionEmpService = sesionEmpService;
     }
 
 
@@ -50,40 +51,32 @@ public class SesionesController : ControllerBase
     }
 
 
-    [HttpDelete("{Id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<SesionDTO> Delete(int Id)
+
+    /// <summary>
+    /// Returns all the SesionEmp
+    /// </summary>
+    /// <returns>Returns a list of <see cref="SesionEmpDTO"/></returns>
+    // [Authorize]
+    [HttpGet("sesionEmp/")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionEmpDTO))]
+    public ActionResult<SesionEmpDTO> GetAllSesionEmpleado()
     {
-        SesionDTO result = _sesionService.GetByID(Id);
-
-        if (result == null)
-            return NotFound();
-
-        _sesionService.Delete(Id);
-
-        return Ok(result);
-
+        return Ok(_sesionEmpService.GetAllSesionEmp());
     }
 
 
 
-    [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
-    public ActionResult<SesionDTO> Post([FromBody] BaseSesionDTO baseSesion)
+    /// <summary>
+    /// Returns SesionEmp of specific user
+    /// </summary>
+    /// <returns>Returns a list of <see cref="SesionEmpDTO"/></returns>
+    // [Authorize]
+    [HttpGet("sesionEmp/{IdEmp}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionEmpDTO))]
+    public ActionResult<SesionEmpDTO> GetSesionEmpleado(int IdEmp)
     {
-        BaseSesionDTO baseS = new BaseSesionDTO();
-        baseS.IdEmpleado = baseSesion.IdEmpleado;
-        baseS.Fecha = DateTime.Now;
-        return Ok(_sesionService.Add(baseS));
+        return Ok(_sesionEmpService.GetByIdSesion(IdEmp));
     }
 
-    [HttpPut("{Id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
-    public ActionResult<SesionDTO> Put([FromBody] BaseSesionDTO baseSesion, int Id)
-    {
-
-        return Ok(_sesionService.Modify(baseSesion, Id));
-    }
 
 }

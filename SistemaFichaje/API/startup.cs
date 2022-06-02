@@ -35,6 +35,7 @@ public class Startup
         services.AddSingleton<IEmpleadoService, EmpleadoService>();
         services.AddSingleton<ISesionService, SesionService>();
         services.AddSingleton<ILoginService, LoginService>();
+        services.AddSingleton<ISesionEmpService, SesionEmpService>();
 
 
     }

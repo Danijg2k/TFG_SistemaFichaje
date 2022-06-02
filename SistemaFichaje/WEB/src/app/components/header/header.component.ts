@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   message: string;
   empleado: Empleado | null;
   admin: boolean;
+  username: string;
 
   constructor(
     private helper: HelperActiveService,
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
     this.activeLink = '';
     this.empleado = null;
     this.admin = false;
+    this.username = '';
   }
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class HeaderComponent implements OnInit {
 
   isAdmin() {
     if (this.empleado != null) {
+      this.username = this.empleado.nombre;
       this.admin = this.empleado.rol;
     }
   }
