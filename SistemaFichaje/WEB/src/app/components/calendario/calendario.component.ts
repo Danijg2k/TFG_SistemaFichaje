@@ -4,6 +4,7 @@ import {
   ViewChild,
   TemplateRef,
   ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import {
   startOfDay,
@@ -23,6 +24,10 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
+import { SesionService } from 'src/app/services/sesion.service';
+import { Sesion } from 'src/app/models/sesion.model';
+import { Empleado } from 'src/app/models/empleado.model';
+import { EmpleadoService } from 'src/app/services/empleado.service';
 
 const colors: any = {
   red: {
@@ -58,7 +63,7 @@ const colors: any = {
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css'],
 })
-export class CalendarioComponent {
+export class CalendarioComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent:
     | TemplateRef<any>
     | undefined;
@@ -94,54 +99,67 @@ export class CalendarioComponent {
 
   refresh = new Subject<void>();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  // events: CalendarEvent[] = [
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'An event with no end date',
+  //     color: colors.yellow,
+  //     actions: this.actions,
+  //   },
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'An event with no end date',
+  //     color: colors.yellow,
+  //     actions: this.actions,
+  //   },
+  // ];
+
+  fichajes: Sesion[] | null;
+  fichaje: Sesion | null;
+  empleado: Empleado | null;
+  events: CalendarEvent[];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {
+  constructor(
+    private modal: NgbModal,
+    private _sesion: SesionService,
+    private _empleado: EmpleadoService
+  ) {
     this.modalData = {
       action: '',
       event: null,
     };
+    this.fichajes = null;
+    this.fichaje = null;
+    this.empleado = null;
+    this.events = [];
+  }
+
+  ngOnInit(): void {
+    this._sesion.getAllSesions().subscribe((x) => {
+      this.fichajes = x;
+      // Para cada fichaje en la DDBB
+      this.fichajes?.forEach((fich) => {
+        this.fichaje = fich;
+        // Recogemos el empleado que la ha realizado
+        this._empleado
+          .getEmpleadoById(this.fichaje.idEmpleado)
+          .subscribe((y) => (this.empleado = y));
+        // E introducimos un evento con sus datos
+        if (this.fichaje?.fecha != null) {
+          console.log(
+            `${this.fichaje.fecha} - IdEmp: ${this.fichaje.idEmpleado} - ${this.empleado?.nombre} - ${this.empleado?.dni}`
+          );
+          this.events.push({
+            start: this.fichaje.fecha,
+            title: `${this.fichaje.fecha} - IdEmp: ${this.fichaje.idEmpleado} - ${this.empleado?.nombre} - ${this.empleado?.dni}`,
+            color: colors.yellow,
+            actions: this.actions,
+          });
+        }
+      });
+    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {

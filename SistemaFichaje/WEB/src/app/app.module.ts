@@ -41,6 +41,7 @@ import { BarChartPuestoComponent } from './components/chart-components/bar-chart
 import { LineChartHorasPresencialesComponent } from './components/chart-components/line-chart-horas-presenciales/line-chart-horas-presenciales.component';
 import { PieChartHorasMensualesComponent } from './components/chart-components/pie-chart-horas-mensuales/pie-chart-horas-mensuales.component';
 import { PolarChartFichajesMensualesComponent } from './components/chart-components/polar-chart-fichajes-mensuales/polar-chart-fichajes-mensuales.component';
+import { SesionService } from './services/sesion.service';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { PolarChartFichajesMensualesComponent } from './components/chart-compone
     EmpleadoService,
     HelperActiveService,
     DecimalPipe,
+    SesionService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

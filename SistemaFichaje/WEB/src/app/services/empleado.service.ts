@@ -3,17 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Empleado } from '../models/empleado.model';
-import { CookieHandlerService } from './cookie-handler.service';
 
 @Injectable()
 export class EmpleadoService {
-  constructor(
-    private http: HttpClient,
-    private _cookie: CookieHandlerService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   getEmpleadoData(): Observable<any> {
     return this.http.get(environment.API_URL + 'empleados', {});
+  }
+
+  getEmpleadoById(id: number): Observable<Empleado> {
+    return this.http.get<Empleado>(
+      environment.API_URL + 'empleados/GetById/' + id
+    );
   }
 
   getUserEmpleadoData(email: string): Observable<Empleado> {

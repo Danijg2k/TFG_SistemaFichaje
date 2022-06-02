@@ -1,0 +1,10 @@
+/// <summary>
+/// Base DTO of 'SesionEmp', used for displaying data in Angular Calendar
+/// </summary>
+
+public class BaseSesionEmpDTO
+{
+    public int IdEmpleado { get; set; }
+    public DateTime Fecha { get; set; }
+    public string Nombre { get; set; }
+}
