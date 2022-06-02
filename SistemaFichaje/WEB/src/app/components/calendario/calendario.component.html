@@ -8,14 +8,14 @@
         [(viewDate)]="viewDate"
         (viewDateChange)="closeOpenMonthViewDay()"
       >
-        Previous
+        {{ locale == 'es' ? 'Anterior' : locale == 'en' ? 'Previous' : 'Dernier' }}
       </div>
       <div
         class="btn btn-outline-secondary"
         mwlCalendarToday
         [(viewDate)]="viewDate"
       >
-        Today
+        {{ locale == 'es' ? 'Actual' : locale == 'en' ? 'Actual' : 'Courant' }}
       </div>
       <div
         class="btn btn-primary"
@@ -24,12 +24,12 @@
         [(viewDate)]="viewDate"
         (viewDateChange)="closeOpenMonthViewDay()"
       >
-        Next
+      {{ locale == 'es' ? 'Siguiente' : locale == 'en' ? 'Next' : 'Prochain' }}
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    <h3 class="fs-5">{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
   </div>
   <div class="col-md-4">
     <div class="btn-group">
@@ -38,32 +38,36 @@
         (click)="setView(CalendarView.Month)"
         [class.active]="view === CalendarView.Month"
       >
-        Month
+      {{ locale == 'es' ? 'Mes' : locale == 'en' ? 'Month' : 'Mois' }}
       </div>
       <div
         class="btn btn-primary"
         (click)="setView(CalendarView.Week)"
         [class.active]="view === CalendarView.Week"
       >
-        Week
+      {{ locale == 'es' ? 'Semana' : locale == 'en' ? 'Week' : 'Semaine' }}
       </div>
       <div
         class="btn btn-primary"
         (click)="setView(CalendarView.Day)"
         [class.active]="view === CalendarView.Day"
       >
-        Day
+      {{ locale == 'es' ? 'Día' : locale == 'en' ? 'Day' : 'Jour' }}
       </div>
     </div>
   </div>
 </div>
 <br />
+<!-- [weekendDays]="weekendDays"> borrado del siguiente div por problemas de click -->
+<!-- al clickear teniendo esta línea de codigo no se abren los eventos del día al clickear -->
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
     *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    [locale]="locale"
+    [weekStartsOn]="weekStartsOn"
     [activeDayIsOpen]="activeDayIsOpen"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
@@ -75,6 +79,9 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    [locale]="locale"
+    [weekStartsOn]="weekStartsOn"
+    [weekendDays]="weekendDays">
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
   >
@@ -84,6 +91,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    [locale]="locale">
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
   >

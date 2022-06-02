@@ -23,6 +23,8 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
   CalendarView,
+  DAYS_OF_WEEK,
+  CalendarDateFormatter,
 } from 'angular-calendar';
 import { SesionService } from 'src/app/services/sesion.service';
 import { Sesion } from 'src/app/models/sesion.model';
@@ -32,6 +34,7 @@ import { TokenHandlerService } from 'src/app/services/token-handler.service';
 import { SesionEmp } from 'src/app/models/sesionEmp.model';
 import { DatePipe } from '@angular/common';
 import { EventColor } from 'calendar-utils';
+import { CustomDateFormatter } from './custom-date-formatter.provider';
 
 const colors: any = {
   red: {
@@ -74,6 +77,12 @@ const colors: any = {
   ],
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css'],
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter,
+    },
+  ],
 })
 export class CalendarioComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent:
@@ -116,8 +125,11 @@ export class CalendarioComponent implements OnInit {
   events: CalendarEvent[];
   idEmpActual: number;
   empleado: Empleado | null;
+  // Variables para Internationalisation (cambio idioma)
+  locale: string = 'es'; // <- Con cambiar esta variable (es/en/fr) cambia el idioma de todo el calendario
+  weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
+  weekendDays: number[] = [DAYS_OF_WEEK.SATURDAY, DAYS_OF_WEEK.SUNDAY];
   //
-
   activeDayIsOpen: boolean = true;
 
   constructor(
@@ -240,9 +252,10 @@ export class CalendarioComponent implements OnInit {
     }
   }
 
+  // Popover when clicked
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    // this.modalData = { event, action };
+    // this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   addEvent(): void {

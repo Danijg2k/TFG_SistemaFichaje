@@ -4,7 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule, DecimalPipe, DatePipe } from '@angular/common';
+import {
+  CommonModule,
+  DecimalPipe,
+  DatePipe,
+  registerLocaleData,
+} from '@angular/common';
 // Ng-Bootstrap
 import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // Material Angular
@@ -17,6 +22,9 @@ import { NgChartsModule } from 'ng2-charts';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
+// Importación de idiomas para el calendario (cambio de idioma/Internationalisation)
+import localeFr from '@angular/common/locales/fr';
+import localeEs from '@angular/common/locales/es';
 // Components / services
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './components/app-routing-module/app-routing.module';
@@ -42,6 +50,9 @@ import { LineChartHorasPresencialesComponent } from './components/chart-componen
 import { PieChartHorasMensualesComponent } from './components/chart-components/pie-chart-horas-mensuales/pie-chart-horas-mensuales.component';
 import { PolarChartFichajesMensualesComponent } from './components/chart-components/polar-chart-fichajes-mensuales/polar-chart-fichajes-mensuales.component';
 import { SesionService } from './services/sesion.service';
+
+registerLocaleData(localeFr);
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
