@@ -31,12 +31,12 @@ const routes: Routes = [
   // Todos los usuarios
   {
     path: 'calendario',
-    canActivate: [TokenGuard],
+    // canActivate: [TokenGuard],
     component: CalendarioComponent,
   },
   {
     path: 'general',
-    canActivate: [TokenGuard],
+    // canActivate: [TokenGuard],
     component: ChartsComponent,
   },
   {

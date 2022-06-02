@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   componentes = [
     'EmpleadosComponent',
     'CalendarioComponent',
-    'OverviewComponent',
+    'ChartsComponent',
   ];
 
   activeLink: string;
