@@ -6,13 +6,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule, DecimalPipe } from '@angular/common';
 // Ng-Bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // Material Angular
 import { MaterialExampleModule } from '../material.module';
 // Cookies
 import { CookieService } from 'ngx-cookie-service';
 // Ng Charts
 import { NgChartsModule } from 'ng2-charts';
+// Angular calendar
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
 // Components / services
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './components/app-routing-module/app-routing.module';
@@ -69,6 +73,12 @@ import { PolarChartFichajesMensualesComponent } from './components/chart-compone
     MaterialExampleModule,
     CommonModule,
     NgChartsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
   ],
   providers: [
     LoginService,
