@@ -50,11 +50,13 @@ public class EmpleadosController : ControllerBase
         return Ok(result);
     }
 
-
+    [Authorize]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     public ActionResult<EmpleadoDTO> Post([FromBody] BaseEmpleadoDTO baseEmpleado)
     {
+        // Solo puede crear cuentas el Admin
+        EmpleadoCheck.isAdmin(_empleadoService, HttpContext);
         // Comprobamos si correo y dni existen
         if (_empleadoService.EmailExists(baseEmpleado.Correo))
         {
@@ -69,7 +71,7 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.Add(baseEmpleado));
     }
 
-
+    [Authorize]
     [HttpPatch("update/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
     public ActionResult<EmpleadoDTO> Patch(int Id, [FromBody] JsonPatchDocument<EmpleadoDTO> personPatch)
@@ -79,6 +81,9 @@ public class EmpleadosController : ControllerBase
             var empleado = _empleadoService.GetByID(Id);
             if (empleado != null)
             {
+                // No poder actualizar datos ajenos (excepto siendo Admin)
+                EmpleadoCheck.isSameUser(_empleadoService, HttpContext, empleado.Id);
+
                 personPatch.ApplyTo(empleado);
                 return Ok(_empleadoService.Modify(empleado, Id));
             }

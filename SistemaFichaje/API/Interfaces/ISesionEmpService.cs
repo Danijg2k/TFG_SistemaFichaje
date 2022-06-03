@@ -12,5 +12,4 @@ public interface ISesionEmpService
 
     // Devuelve todos los fichajes
     public IEnumerable<SesionEmpDTO> GetAllSesionEmp();
-
 }
