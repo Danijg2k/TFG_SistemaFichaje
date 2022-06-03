@@ -12,11 +12,11 @@ export class EmpleadoService {
     return this.http.get(environment.API_URL + 'empleados', {});
   }
 
-  getEmpleadoById(id: number): Observable<Empleado> {
-    return this.http.get<Empleado>(
-      environment.API_URL + 'empleados/GetById/' + id
-    );
-  }
+  // getEmpleadoById(id: number): Observable<Empleado> {
+  //   return this.http.get<Empleado>(
+  //     environment.API_URL + 'empleados/GetById/' + id
+  //   );
+  // }
 
   getUserEmpleadoData(email: string): Observable<Empleado> {
     return this.http.get<Empleado>(

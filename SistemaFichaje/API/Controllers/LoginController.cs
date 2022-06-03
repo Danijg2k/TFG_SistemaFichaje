@@ -15,11 +15,11 @@ namespace PI.CursoAngular.API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<LoginController> _logger;
-        private readonly ILoginService _loginService;
+        private readonly IEmpleadoService _loginService;
 
 
 
-        public LoginController(IConfiguration configuration, ILogger<LoginController> logger, ILoginService loginService)
+        public LoginController(IConfiguration configuration, ILogger<LoginController> logger, IEmpleadoService loginService)
         {
             _configuration = configuration;
             _logger = logger;

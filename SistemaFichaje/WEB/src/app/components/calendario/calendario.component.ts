@@ -182,11 +182,8 @@ export class CalendarioComponent implements OnInit {
   loadData() {
     this.fichajes.forEach((x) => {
       // Procedemos a crear todos los eventos
-      console.log(x.fecha + '/' + startOfDay(new Date()));
       const d = new Date(x.fecha);
-      const t = this.empleado?.rol
-        ? `${d.toLocaleTimeString('es-Es')} - ${x.nombre}`
-        : `${d.toLocaleTimeString('es-Es')} - ${x.nombre}`;
+      const t = `${d.toLocaleTimeString('es-Es')} - ${x.nombre}`;
       this.events.push({
         start: d,
         title: t,

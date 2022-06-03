@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.JsonPatch;
 
 public interface ISesionEmpService
 {
-    // Usado por calendario User
+    // Devuelve todos los fichajes del empleado con esa Id
     public IEnumerable<SesionEmpDTO> GetByIdSesion(int id);
 
-    // Usado por calendario Admin
+    // Devuelve todos los fichajes
     public IEnumerable<SesionEmpDTO> GetAllSesionEmp();
 
 }

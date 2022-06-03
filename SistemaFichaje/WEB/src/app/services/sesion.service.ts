@@ -10,13 +10,13 @@ import { CookieHandlerService } from './cookie-handler.service';
 export class SesionService {
   constructor(private http: HttpClient) {}
 
-  getAllSesions(): Observable<Sesion[]> {
-    return this.http.get<Sesion[]>(environment.API_URL + 'sesiones', {});
-  }
+  // getAllSesions(): Observable<Sesion[]> {
+  //   return this.http.get<Sesion[]>(environment.API_URL + 'sesiones', {});
+  // }
 
-  getSesion(id: number): Observable<Sesion> {
-    return this.http.get<Sesion>(environment.API_URL + 'sesiones/' + id);
-  }
+  // getSesion(id: number): Observable<Sesion> {
+  //   return this.http.get<Sesion>(environment.API_URL + 'sesiones/' + id);
+  // }
 
   // SesionEmp of specific User (used for calendar User)
   getSesionsOfEmp(idEmp: number): Observable<SesionEmp[]> {

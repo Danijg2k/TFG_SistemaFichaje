@@ -14,9 +14,9 @@ namespace WebApi.Helpers
     {
         private readonly RequestDelegate _next;
         private readonly IConfiguration _configuration;
-        private readonly ILoginService _loginService;
+        private readonly IEmpleadoService _loginService;
 
-        public JwtMiddleware(RequestDelegate next, IConfiguration configuration, ILoginService service)
+        public JwtMiddleware(RequestDelegate next, IConfiguration configuration, IEmpleadoService service)
         {
             _next = next;
             _configuration = configuration;

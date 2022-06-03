@@ -26,15 +26,12 @@ public class Startup
         var mapperConfig = new MapperConfiguration(mc =>
         {
             mc.AddProfile(new EmpleadoProfile());
-            mc.AddProfile(new SesionProfile());
         });
 
         IMapper mapper = mapperConfig.CreateMapper();
         services.AddSingleton(mapper);
 
         services.AddSingleton<IEmpleadoService, EmpleadoService>();
-        services.AddSingleton<ISesionService, SesionService>();
-        services.AddSingleton<ILoginService, LoginService>();
         services.AddSingleton<ISesionEmpService, SesionEmpService>();
 
 

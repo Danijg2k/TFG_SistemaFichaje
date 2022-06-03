@@ -36,24 +36,6 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.GetAll());
     }
 
-    [Authorize]
-    [HttpGet("GetById/{Id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<EmpleadoDTO> Get(int Id)
-    {
-
-        // EmpleadoCheck.isSameUser(_empleadoService, HttpContext, Id);
-        EmpleadoDTO result = _empleadoService.GetByID(Id);
-
-        if (result == null)
-            return NotFound();
-
-        return Ok(result);
-
-    }
-
-
 
     [Authorize]
     [HttpGet("GetByEmail/{Email}")]
@@ -61,35 +43,12 @@ public class EmpleadosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<EmpleadoDTO> Get(string Email)
     {
-
         EmpleadoDTO result = _empleadoService.GetByUser(Email);
-
-
         if (result == null)
             return NotFound();
-
         EmpleadoCheck.isSameUser(_empleadoService, HttpContext, result.Id);
         return Ok(result);
-
     }
-
-
-    [HttpDelete("{Id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<EmpleadoDTO> Delete(int Id)
-    {
-        EmpleadoDTO result = _empleadoService.GetByID(Id);
-
-        if (result == null)
-            return NotFound();
-
-        _empleadoService.Delete(Id);
-
-        return Ok(result);
-
-    }
-
 
 
     [HttpPost]
@@ -107,31 +66,8 @@ public class EmpleadosController : ControllerBase
         }
         // Ciframos la contraseña que viene de la web
         baseEmpleado.HashPassword = HashPassword.sha256(baseEmpleado.HashPassword);
-
         return Ok(_empleadoService.Add(baseEmpleado));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    [HttpPut("{Id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
-    public ActionResult<EmpleadoDTO> Put([FromBody] BaseEmpleadoDTO baseEmpleado, int Id)
-    {
-
-        return Ok(_empleadoService.Modify(baseEmpleado, Id));
-    }
-
 
 
     [HttpPatch("update/{Id}")]
@@ -141,14 +77,12 @@ public class EmpleadosController : ControllerBase
         if (personPatch != null)
         {
             var empleado = _empleadoService.GetByID(Id);
-
             if (empleado != null)
             {
                 personPatch.ApplyTo(empleado);
                 return Ok(_empleadoService.Modify(empleado, Id));
             }
         }
-
         return BadRequest();
     }
 
