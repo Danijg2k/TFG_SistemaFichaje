@@ -3,7 +3,6 @@
 
     <!-- Div descripción -->
     <div class="modal-content border-dark mb-5">
-      <!-- <p class="text-center modal-body m-0 fst-italic fw-bold desc fs-6">Cambiar esto con info tabla</p> -->
       <ngb-accordion #acc="ngbAccordion">
         <ngb-panel title="Información">
           <ng-template ngbPanelContent>
@@ -33,7 +32,6 @@
         <div class="col-sm-auto">
           <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm">
         </div>
-        <!-- <span class="col col-form-label" *ngIf="service.loading$ | async">Cargando</span> -->
       </div>
     </div>
 
