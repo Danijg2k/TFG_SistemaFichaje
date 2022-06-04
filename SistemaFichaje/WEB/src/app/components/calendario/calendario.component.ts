@@ -156,11 +156,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   checkAdminUser() {
-    if (this.empleado?.rol) {
-      this.loadAdminData();
-    } else {
-      this.loadUserData();
-    }
+    this.empleado?.rol ? this.loadAdminData() : this.loadUserData();
   }
 
   loadAdminData() {

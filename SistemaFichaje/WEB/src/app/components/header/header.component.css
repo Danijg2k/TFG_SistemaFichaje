@@ -1,6 +1,7 @@
 /* Central nav menu styles */
 .container-fluid {
-  background-color: #3e4551;
+  /* background-color: #3e4551; */
+  background-color: #3C767A;
 }
 
 .mat-tab-nav-bar a {
