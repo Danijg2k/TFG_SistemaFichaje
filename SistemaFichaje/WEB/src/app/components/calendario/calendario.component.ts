@@ -73,6 +73,11 @@ const colors: any = {
         background-color: #f5f5f5;
         padding: 15px;
       }
+
+      /* Ocultar eventos (para Admin) */
+      .cal-events .event {
+        display: none;
+      }
     `,
   ],
   templateUrl: './calendario.component.html',
@@ -180,11 +185,14 @@ export class CalendarioComponent implements OnInit {
       // Procedemos a crear todos los eventos
       const d = new Date(x.fecha);
       const t = `${d.toLocaleTimeString('es-Es')} - ${x.nombre}`;
+      const c = this.empleado?.rol ? 'event' : '';
       this.events.push({
         start: d,
         title: t,
         color: this.giveColor(x.idEmpleado),
         actions: this.actions,
+        // Con la siguiente línea y los estilos de este archivo ocultamos eventos
+        cssClass: c,
       });
       //
     });
