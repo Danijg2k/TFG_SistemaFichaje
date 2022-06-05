@@ -25,7 +25,6 @@ export class EmpleadoService {
     );
   }
 
-  // TODO
   postEmpleadoData<T>(body: any): Observable<HttpResponse<T>> {
     let bodyData = new Empleado();
     bodyData.nombre = body.Nombre;

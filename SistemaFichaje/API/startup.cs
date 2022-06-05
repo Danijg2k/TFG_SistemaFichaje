@@ -32,6 +32,7 @@ public class Startup
         services.AddSingleton(mapper);
 
         services.AddSingleton<IEmpleadoService, EmpleadoService>();
+        services.AddSingleton<ISesionService, SesionService>();
         services.AddSingleton<ISesionEmpService, SesionEmpService>();
 
 

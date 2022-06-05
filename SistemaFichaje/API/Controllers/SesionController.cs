@@ -10,18 +10,51 @@ public class SesionesController : ControllerBase
     private readonly ILogger<SesionesController> _logger;
     private readonly ISesionEmpService _sesionEmpService;
     private readonly IEmpleadoService _empleadoService;
+    private readonly ISesionService _sesionService;
 
     /// <summary>
     /// It creates a sesionController
     /// </summary>
     /// <param name="logger">used for logging</param>
     /// <param name="sesionService">used for dealing with the sesion data</param>
-    public SesionesController(ILogger<SesionesController> logger, ISesionEmpService sesionEmpService, IEmpleadoService empleadoService)
+    public SesionesController(ILogger<SesionesController> logger, ISesionEmpService sesionEmpService, IEmpleadoService empleadoService, ISesionService sesionService)
     {
         _logger = logger;
         _sesionEmpService = sesionEmpService;
         _empleadoService = empleadoService;
+        _sesionService = sesionService;
     }
+
+
+    /// <summary>
+    /// Returns all the Sesion
+    /// </summary>
+    /// <returns>Returns a list of <see cref="SesionDTO"/></returns>
+    [Authorize]
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
+    public ActionResult<SesionDTO> Get()
+    {
+        return Ok(_sesionService.GetAll());
+    }
+
+
+    // [Authorize]
+    [HttpPost("{idEmp}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
+    public ActionResult<SesionDTO> Post(int idEmp)
+    {
+        // Recogemos la fecha actual
+        DateTime d;
+        DateTime now = DateTime.Now;
+        d = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+        // Y la enviamos
+        BaseSesionDTO baseS = new BaseSesionDTO();
+        baseS.IdEmpleado = idEmp;
+        baseS.Fecha = d;
+        return Ok(_sesionService.Add(baseS));
+    }
+
 
     /// <summary>
     /// Returns all the SesionEmp
