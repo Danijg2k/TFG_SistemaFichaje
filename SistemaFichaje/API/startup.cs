@@ -1,5 +1,8 @@
 using AutoMapper;
 using WebApi.Helpers;
+// Para que Swagger permita introducir headers
+using WebApplication1.Filters;
+// 
 
 public class Startup
 {
@@ -19,13 +22,42 @@ public class Startup
         services.AddTransient<FichajeContext>(_ =>
             new FichajeContext(Configuration.GetConnectionString("DefaultConnection")));
 
-        // Cosa 1 de 2 añadida para Swagger
-        services.AddSwaggerGen();
+        // Para Swagger
+        services.AddSwaggerGen(options =>
+        {
+            // Para Headers extra
+            options.OperationFilter<HeadersSwagger>();
+            // 
+            options.AddSecurityDefinition("bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme."
+            });
+            options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+                {
+                    {
+                          new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                            {
+                                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                                {
+                                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                                    Id = "bearer"
+                                }
+                            },
+                            new string[] {}
+                    }
+                });
+        });
         //
 
         var mapperConfig = new MapperConfiguration(mc =>
         {
             mc.AddProfile(new EmpleadoProfile());
+            mc.AddProfile(new SesionProfile());
         });
 
         IMapper mapper = mapperConfig.CreateMapper();
@@ -43,7 +75,7 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            // Cosa 2 de 2 añadida para Swagger
+            // Para Swagger
             app.UseSwagger();
             app.UseSwaggerUI();
             //
@@ -62,7 +94,7 @@ public class Startup
             .AllowAnyHeader());
 
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
         app.UseStaticFiles();
 
         app.UseRouting();
