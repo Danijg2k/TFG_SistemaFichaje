@@ -13,7 +13,9 @@ export class CustomDateFormatter extends CalendarDateFormatter {
         locale
       );
       const weekNumber: number = getISOWeek(date);
-      return `Semaine ${weekNumber} en ${year}`;
+      const nom = (locale == "es" ? "Semana" : locale == "en" ? "Week" : "Semaine"); 
+      const nom2 = (locale == "es" ? "de" : locale == "en" ? "of" : "sur"); 
+      return `${nom} ${weekNumber} ${nom2} ${year}`;
     }
     // Necesario para cumplir return string
     return '';
