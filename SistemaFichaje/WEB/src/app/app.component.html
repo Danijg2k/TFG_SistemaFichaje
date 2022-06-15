@@ -1,6 +1,11 @@
-<!-- Header (si estamos en el login (ruta '/') no se muestra) -->
-<app-header *ngIf="displayHeadFoot()"></app-header>
-<!-- Contenido principal -->
-<router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
-<!-- Footer (si estamos en el login (ruta '/') no se muestra) -->
-<app-footer *ngIf="displayHeadFoot()"></app-footer>
+<div class="mw-2000 m-auto allContent">
+  <!-- Header (si estamos en el login (ruta '/') no se muestra) -->
+  <app-header *ngIf="displayHeadFoot()"></app-header>
+  <div class="mainContent">
+    <!-- Contenido principal -->
+    <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+  </div>
+  <!-- Footer (si estamos en el login (ruta '/') no se muestra) -->
+  <app-footer *ngIf="displayHeadFoot()"></app-footer>
+</div>
+

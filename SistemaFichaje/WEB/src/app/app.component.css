@@ -1,19 +1,10 @@
-/* Plantilla de colores de la aplicación */
-/* Las siguientes clases no existen, son para visualizar los colores */
-
-.tintes {
-  color: #3E4551;
-  color: #565C67;
-  color: #6E747D;
-  color: #868B92;
-  color: #9FA2A8;
-  color: #B7B9BE;
-  color: #CFD1D4;
-  color: #E7E8E9;
+/* Footer at bottom of page when there is no content */
+.allContent{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.tri {
-  color: #3E4551;
-  color: #513E45;
-  color: #45513E;
+.mainContent{
+  flex-grow: 1;
 }

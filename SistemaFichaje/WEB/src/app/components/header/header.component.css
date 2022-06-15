@@ -38,3 +38,9 @@
   color: black;
 }
 
+/* Separation between header components */
+@media (max-width: 768px) {
+  .divsHeader {
+    margin-top: 20px;
+  }
+}
