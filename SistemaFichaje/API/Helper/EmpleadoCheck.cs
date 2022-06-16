@@ -1,3 +1,7 @@
+/// <summary>
+/// Servicio utilizado para comprobaciones, antes de mostrar datos
+/// </summary>
+
 public class EmpleadoCheck
 {
     public static void isAdmin(IEmpleadoService _empleadoService, HttpContext context)

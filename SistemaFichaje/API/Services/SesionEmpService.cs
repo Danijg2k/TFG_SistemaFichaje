@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.AspNetCore.JsonPatch;
 
 /// <summary>
 /// 'SesionEmp' service

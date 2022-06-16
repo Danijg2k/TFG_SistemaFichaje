@@ -1,5 +1,5 @@
 /// <summary>
-/// DTO of 'SesionEmp'
+/// DTO de 'SesionEmp'
 /// </summary>
 
 public class SesionEmpDTO : BaseSesionEmpDTO
@@ -8,7 +8,4 @@ public class SesionEmpDTO : BaseSesionEmpDTO
     {
 
     }
-
-
-    // public int Id { get; set; }
 }

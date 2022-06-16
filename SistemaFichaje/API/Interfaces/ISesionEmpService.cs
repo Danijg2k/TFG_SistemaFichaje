@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using Microsoft.AspNetCore.JsonPatch;
-
 /// <summary>
 /// Interfaz usada por 'SesionEmp' service
 /// </summary>

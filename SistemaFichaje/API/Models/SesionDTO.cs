@@ -1,5 +1,5 @@
 /// <summary>
-/// DTO of 'Sesion'
+/// DTO de 'Sesion'
 /// </summary>
 
 public class SesionDTO : BaseSesionDTO

@@ -1,4 +1,9 @@
 using System.Text;
+
+/// <summary>
+/// Servicio utilizado para cifrar contraseñas mediante Hash
+/// </summary>
+
 public class HashPassword
 {
     public static string sha256(string randomString)

@@ -1,5 +1,5 @@
 /// <summary>
-/// DTO of 'Empleado'
+/// DTO de 'Empleado'
 /// </summary>
 
 public class EmpleadoDTO : BaseEmpleadoDTO

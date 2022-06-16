@@ -1,7 +1,7 @@
 using AutoMapper;
 
 /// <summary>
-/// Mapper for 'Sesion' DTO - Entity
+/// Mapper usado para 'Sesion' DTO - Entity
 /// </summary>
 
 public class SesionProfile : Profile

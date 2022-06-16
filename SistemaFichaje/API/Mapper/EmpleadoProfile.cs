@@ -1,7 +1,7 @@
 using AutoMapper;
 
 /// <summary>
-/// Mapper for 'Empleado' DTO - Entity
+/// Mapper usado para 'Empleado' DTO - Entity
 /// </summary>
 
 public class EmpleadoProfile : Profile

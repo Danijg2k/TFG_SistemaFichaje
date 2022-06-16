@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.AspNetCore.JsonPatch;
 
 /// <summary>
 /// 'Sesion' service
@@ -23,7 +22,7 @@ public class SesionService : ISesionService
         _context.SaveChanges();
         return _mapper.Map<SesionDTO>(entityAdded);
     }
-    
+
     public IEnumerable<SesionDTO> GetAll()
     {
         return _mapper.Map<IEnumerable<SesionDTO>>(_context.Sesiones.Select(x => x));

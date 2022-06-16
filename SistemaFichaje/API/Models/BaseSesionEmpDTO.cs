@@ -1,5 +1,5 @@
 /// <summary>
-/// Base DTO of 'SesionEmp', used for displaying data in Angular Calendar
+/// DTO base de 'SesionEmp', usado para mostrar datos en Angular Calendar
 /// </summary>
 
 public class BaseSesionEmpDTO

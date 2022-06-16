@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
+/// <summary>
+/// Añadir a Swagger header X-Login
+/// </summary>
+
 namespace WebApplication1.Filters
 {
-    public class HeadersSwagger: IOperationFilter
+    public class HeadersSwagger : IOperationFilter
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
@@ -24,5 +24,6 @@ namespace WebApplication1.Filters
                     Type = "string"
                 }
             });
-       }}
+        }
+    }
 }

@@ -1,3 +1,7 @@
+/// <summary>
+/// DTO de 'Login'
+/// </summary>
+
 public class LoginDTO : BaseLoginDTO
 {
     public LoginDTO()

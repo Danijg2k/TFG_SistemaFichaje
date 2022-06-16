@@ -1,12 +1,11 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
+/// <summary>
+/// Servicio utilizado para comprobar autorización (serializar)
+/// </summary>
 
 namespace WebApi.Helpers
 {

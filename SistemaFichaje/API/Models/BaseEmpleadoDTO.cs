@@ -1,5 +1,5 @@
 /// <summary>
-/// Base DTO of 'Empleado', used in creation
+/// DTO base de 'Empleado', usado en creación
 /// </summary>
 
 public class BaseEmpleadoDTO

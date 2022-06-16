@@ -1,3 +1,7 @@
+/// <summary>
+/// DTO base de 'Login', usado en creación
+/// </summary>
+
 public class BaseLoginDTO
 {
     // Usuario del login
