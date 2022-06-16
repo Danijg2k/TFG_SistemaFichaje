@@ -48,7 +48,7 @@ Tras haber instalado todo, pasamos a inicializar página web y API.
 
 ### Poner en marcha Angular
 Abrimos terminal en directorio 'WEB' y tecleamos:
-```
+```bash
 npm install
 ng serve
 ```
@@ -57,7 +57,7 @@ Con la primera orden se instalarán todas las dependencias necesarias para nuest
 
 ### Poner en marcha API
 Abrimos terminal en directorio 'API' y tecleamos:
-```
+```bash
 dotnet build
 dotnet run
 ```
@@ -65,5 +65,12 @@ dotnet run
 La primera orden buildea el proyecto, y la segunda arranca la API.
 
 ## Información adicional/ayuda
-
 Para más información consultar memoria del proyecto (Directorio 'Memoria' -> pdf)
+
+## Contacto
+Puedes seguirme en las siguientes redes sociales. 
+
+|  |  |
+| ------------- | ------------- |
+| ![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)  | [Instagram](https://www.instagram.com/danijg_00/)  |
+| ![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)  | [LinkedIn](https://www.linkedin.com/in/daniel-jimenez-gutierrez/)  |
