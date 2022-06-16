@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "+5moDQ8g4xXPzwlF6F0U+jX/8GM4Jeod476tJ9adPDzViQXzC5ERaRL22fh84gEn4HDVoepHOjX+W3dGwPGzOg==",
+  "dgSpecHash": "Lc/9jI3Ad7wvj5jjVYu6i+KBGnN8MZvxOazykYKUkXVUZN/+eXWMh47+nA9VgHLVnL3RG4FrThxoEcHJkTTRPg==",
   "success": true,
   "projectFilePath": "/home/dani/AngularApps/SistemaFichaje/API/Api.csproj",
   "expectedPackageFiles": [
     "/home/dani/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/dani/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.1/automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "/home/dani/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
-    "/home/dani/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/5.0.5/microsoft.aspnetcore.authentication.jwtbearer.5.0.5.nupkg.sha512",
+    "/home/dani/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/5.0.9/microsoft.aspnetcore.authentication.jwtbearer.5.0.9.nupkg.sha512",
     "/home/dani/.nuget/packages/microsoft.aspnetcore.jsonpatch/6.0.2/microsoft.aspnetcore.jsonpatch.6.0.2.nupkg.sha512",
     "/home/dani/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/6.0.2/microsoft.aspnetcore.mvc.newtonsoftjson.6.0.2.nupkg.sha512",
     "/home/dani/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
