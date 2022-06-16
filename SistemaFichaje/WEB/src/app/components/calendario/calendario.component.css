@@ -1,6 +1,14 @@
+/* Correct visualization when using mobile */
+
 @media (max-width: 450px) {
-  .cal-day-bnumber{
-    /* display: none; */
+  .cal-day-badge.ng-star-inserted{
+    margin-left: 2px;
+    font-size: 8px;
+  }
+
+  .cal-day-number{
+    margin-right: 5px !important;
+    font-size: 13px !important;
   }
 }
 
