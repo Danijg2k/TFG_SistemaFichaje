@@ -34,3 +34,43 @@ Trabajo de fin de grado que consiste en un sistema de fichaje para empresas.
 
 &emsp;![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
 
+## Versiones e instalación
+Se mostrarán las versiones utilizadas en este proyecto. A continuación se indica lo necesario para poner en marcha el proyecto.
+
+| Tecnología | Versión utilizada en este proyecto | Link página oficial  |
+| ------------- | ------------- | ------------- |
+| Docker desktop  | 4.9.0  | [Docker](https://www.docker.com/get-started/)  | 
+| Imagen Docker mssql server  | 2022-latest  | [Imagen MySQL-Server](https://hub.docker.com/r/mysql/mysql-server)  | 
+| API  | .NET 6  | [dotnet 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)  |
+| NodeJs  | 16.15.1 LTS  | [NodeJs](https://nodejs.org/es/)  | 
+
+Tras haber instalado todo, pasamos a inicializar página web y API.
+
+### Poner en marcha Angular
+Abrimos terminal en directorio 'WEB' y tecleamos:
+```bash
+npm install
+ng serve
+```
+
+Con la primera orden se instalarán todas las dependencias necesarias para nuestro proyecto. La segunda arranca Angular.
+
+### Poner en marcha API
+Abrimos terminal en directorio 'API' y tecleamos:
+```bash
+dotnet build
+dotnet run
+```
+
+La primera orden buildea el proyecto, y la segunda arranca la API.
+
+## Información adicional/ayuda
+Para más información consultar memoria del proyecto (Directorio 'Memoria' -> pdf)
+
+## Contacto
+Puedes seguirme en las siguientes redes sociales. 
+
+|  |  |
+| ------------- | ------------- |
+| ![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)  | [Instagram](https://www.instagram.com/danijg_00/)  |
+| ![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)  | [LinkedIn](https://www.linkedin.com/in/daniel-jimenez-gutierrez/)  |
