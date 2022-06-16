@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.JsonPatch;
 
 /// <summary>
-/// Interface used for 'SesionEmp' service
+/// Interfaz usada por 'SesionEmp' service
 /// </summary>
-
 public interface ISesionEmpService
 {
     // Devuelve todos los fichajes del empleado con esa Id

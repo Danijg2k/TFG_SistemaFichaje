@@ -2,7 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 
 /// <summary>
-/// 'Sesion' service
+/// 'SesionEmp' service
 /// </summary>
 
 public class SesionEmpService : ISesionEmpService

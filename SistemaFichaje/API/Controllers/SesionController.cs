@@ -13,10 +13,12 @@ public class SesionesController : ControllerBase
     private readonly ISesionService _sesionService;
 
     /// <summary>
-    /// It creates a sesionController
+    /// Crea un sesionController
     /// </summary>
-    /// <param name="logger">used for logging</param>
-    /// <param name="sesionService">used for dealing with the sesion data</param>
+    /// <param name="logger">usado para logging</param>
+    /// <param name="sesionEmpService">usado para tratar con información de sesionEmp</param>
+    /// <param name="empleadoService">usado para tratar con información de empleado</param>
+    /// <param name="sesionService">usado para tratar con información de sesion</param>
     public SesionesController(ILogger<SesionesController> logger, ISesionEmpService sesionEmpService, IEmpleadoService empleadoService, ISesionService sesionService)
     {
         _logger = logger;
@@ -27,9 +29,9 @@ public class SesionesController : ControllerBase
 
 
     /// <summary>
-    /// Returns all the Sesion
+    /// Devuelve todos los fichajes
     /// </summary>
-    /// <returns>Returns a list of <see cref="SesionDTO"/></returns>
+    /// <returns>Devuelve lista de <see cref="SesionDTO"/></returns>
     [Authorize]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
@@ -39,7 +41,7 @@ public class SesionesController : ControllerBase
     }
 
 
-    // [Authorize]
+
     [HttpPost("{idEmp}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
     public ActionResult<SesionDTO> Post(int idEmp)

@@ -1,12 +1,7 @@
 @media (max-width: 450px) {
+  .cal-day-bnumber{
+    /* display: none; */
+  }
 }
 
 
-.cal-day-badge.ng-star-inserted{
-  font-size: 12px;
-
-}
-.cal-day-number{
-  display:block;
-
-}

@@ -10,10 +10,10 @@
 #define RST_PIN D3
 #define SS_PIN D4
 
-#define SERVER_IP "http://192.168.0.16:5114"
+#define SERVER_IP "http://192.168.43.79:5114"
 #ifndef STASSID
-#define STASSID "vodafoneB9B8"
-#define STAPSK  "ZZYXUTY4YWMKFT"
+#define STASSID "ssid"
+#define STAPSK  "12345678"
 // Hardcodeado (prueba)
 #define ID_EMPLEADO "5"
 #endif

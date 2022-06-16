@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.JsonPatch;
 
 /// <summary>
-/// Interface used for 'Empleado' service
+/// Interfaz usada por 'Empleado' service
 /// </summary>
 
 public interface IEmpleadoService

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.JsonPatch;
 
 /// <summary>
-/// Interface used for 'Sesion' service
+/// Interfaz usada por 'Sesion' service
 /// </summary>
 
 public interface ISesionService
