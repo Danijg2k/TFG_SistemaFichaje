@@ -41,7 +41,11 @@ public class SesionesController : ControllerBase
     }
 
 
-
+    /// <summary>
+    /// Envía datos de un fichaje
+    /// </summary>
+    /// <param name="idEmp">Id del empleado que realiza el fichaje</param>
+    /// <returns>Devuelve <see cref="SesionDTO"/></returns>
     [HttpPost("{idEmp}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionDTO))]
     public ActionResult<SesionDTO> Post(int idEmp)
@@ -59,9 +63,9 @@ public class SesionesController : ControllerBase
 
 
     /// <summary>
-    /// Returns all the SesionEmp
+    /// Devuelve todos los sesionEmp (modelo utilizado para calendario)
     /// </summary>
-    /// <returns>Returns a list of <see cref="SesionEmpDTO"/></returns>
+    /// <returns>Devuelve lista de <see cref="SesionEmpDTO"/></returns>
     [Authorize]
     [HttpGet("sesionEmp/")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionEmpDTO))]
@@ -74,9 +78,10 @@ public class SesionesController : ControllerBase
 
 
     /// <summary>
-    /// Returns SesionEmp of specific user
+    /// Devuelve los SesionEmp de un usuario específico
     /// </summary>
-    /// <returns>Returns a list of <see cref="SesionEmpDTO"/></returns>
+    /// <param name="IdEmp">Id del empleado cuyos sesionEmp queremos buscar</param>
+    /// <returns>Devuelve lista de <see cref="SesionEmpDTO"/></returns>
     [Authorize]
     [HttpGet("sesionEmp/{IdEmp}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SesionEmpDTO))]

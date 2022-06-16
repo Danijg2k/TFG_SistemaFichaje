@@ -12,10 +12,10 @@ public class EmpleadosController : ControllerBase
 
 
     /// <summary>
-    /// It creates a empleadoController
+    /// Crea un empleadoController
     /// </summary>
-    /// <param name="logger">used for logging</param>
-    /// <param name="empleadoService">used for dealing with the empleado data</param>
+    /// <param name="logger">usado para logging</param>
+    /// <param name="empleadoService">usado para tratar con información de empleado</param>
     public EmpleadosController(ILogger<EmpleadosController> logger, IEmpleadoService empleadoService)
     {
         _logger = logger;
@@ -24,9 +24,9 @@ public class EmpleadosController : ControllerBase
 
 
     /// <summary>
-    /// Returns all the Empleado
+    /// Devuelve todos los empleados
     /// </summary>
-    /// <returns>Returns a list of <see cref="EmpleadoDTO"/></returns>
+    /// <returns>Devuelve lista de <see cref="EmpleadoDTO"/></returns>
     [Authorize]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
@@ -36,7 +36,11 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.GetAll());
     }
 
-
+    /// <summary>
+    /// Devuelve empleado buscado por su email
+    /// </summary>
+    /// <param name="Email">Correo del empleado a buscar</param>
+    /// <returns>Devuelve <see cref="EmpleadoDTO"/></returns>
     [Authorize]
     [HttpGet("GetByEmail/{Email}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
@@ -50,6 +54,12 @@ public class EmpleadosController : ControllerBase
         return Ok(result);
     }
 
+
+    /// <summary>
+    /// Envía datos de un empleado
+    /// </summary>
+    /// <param name="baseEmpleado">Datos del empleado que se crea</param>
+    /// <returns>Devuelve <see cref="EmpleadoDTO"/></returns>
     [Authorize]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]
@@ -71,6 +81,13 @@ public class EmpleadosController : ControllerBase
         return Ok(_empleadoService.Add(baseEmpleado));
     }
 
+
+    /// <summary>
+    /// Actualiza datos de un empleado
+    /// </summary>
+    /// <param name="Id">Id del empleado a actualizar</param>
+    /// <param name="personPatch">Datos actualizados del empleado</param>
+    /// <returns>Devuelve <see cref="EmpleadoDTO"/></returns>
     [Authorize]
     [HttpPatch("update/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmpleadoDTO))]

@@ -18,7 +18,12 @@ namespace PI.CursoAngular.API.Controllers
         private readonly IEmpleadoService _loginService;
 
 
-
+        /// <summary>
+        /// Crea un loginController
+        /// </summary>
+        /// <param name="configuration">usado para configuración</param>
+        /// <param name="logger">usado para logging</param>
+        /// <param name="loginService">usado para tratar con información de login</param>
         public LoginController(IConfiguration configuration, ILogger<LoginController> logger, IEmpleadoService loginService)
         {
             _configuration = configuration;
@@ -26,6 +31,12 @@ namespace PI.CursoAngular.API.Controllers
             _loginService = loginService;
         }
 
+
+        /// <summary>
+        /// Realiza inicio de sesión
+        /// </summary>
+        /// <param name="login">Datos de inicio de sesión (usuario y contraseña)</param>
+        /// <returns>Devuelve respuesta del Login</returns>
         [HttpPost]
         [Route("login")]
         public IActionResult Login(BaseLoginDTO login)
